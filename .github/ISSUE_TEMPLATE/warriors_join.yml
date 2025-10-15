@@ -1,0 +1,32 @@
+name: "Join – The First Seven Warriors"
+description: "参加希望の表明（Architect / Catalyst / Other）"
+labels: ["join","warriors"]
+body:
+  - type: dropdown
+    id: role
+    attributes:
+      label: "志望ロール"
+      options: 
+        - "Quantum Architect"
+        - "Visionary Catalyst"
+        - "Other – describe"
+        
+  - type: textarea
+    id: strength
+    attributes:
+      label: "強み（技術/資金/表現/哲学）"
+      
+  - type: textarea
+    id: proof
+    attributes:
+      label: "作品・実績（リンク可）"
+      
+  - type: textarea
+    id: philosophy
+    attributes:
+      label: "不可能投資の哲学（Catalyst向け任意）"
+      
+  - type: input
+    id: contact
+    attributes:
+      label: "連絡先（X/Email/ENS など）"

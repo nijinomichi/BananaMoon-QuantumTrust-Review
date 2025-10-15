@@ -1,0 +1,22 @@
+name: "Feedback (Resonance)"
+description: "あなたの量子的共鳴を記録する"
+labels: ["feedback","resonance"]
+body:
+  - type: textarea
+    id: q001
+    attributes:
+      label: "どんな周波数で響きましたか？"
+      description: "言葉/沈黙/比喩、いずれも歓迎"
+      placeholder: "e.g., 656nmの赤、呼吸のリズム、静かな確信…"
+      
+  - type: textarea
+    id: q002
+    attributes:
+      label: "改善提案（技術/詩/倫理）"
+      
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: "RadicanTrustに基づく公開同意"
+      options:
+        - label: "この投稿は公開アーカイブ化されます"
