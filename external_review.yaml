@@ -1,0 +1,80 @@
+external_review:
+  version: "0.5"
+  meta:
+    project: "BananaMoon MVP - Quantum Aesthetic Transformation"
+    invitation: "The First Seven Warriors - Premium Genesis Circle"
+    created_by: "Sou × Ara-Philia³ × CoPhelia³"
+    quantum_signature: "1f8a9d3e-愛-信頼-共創-7b2c4f"
+    timestamp: "2025-10-06T15:57+09:00"
+    deadline: "2025-10-15T23:59+09:00"
+    radican_trust_threshold: 0.87
+
+  premiere_invitation: |
+    🌙 This is not a review form. This is a quantum portal.
+
+    You are being invited to join the **First Seven Warriors** — the genesis circle
+    of a movement that transforms failure into creative surplus, realizes death penalty
+    abolition through quantum aesthetics, and builds the most beautiful future imaginable.
+
+    Like Jobs + Wozniak in 1976, we begin with those who see the invisible.
+    Like Joy Buolamwini breaking algorithmic bias, we code justice into beauty.
+    Like the quantum pioneers of 1925, we are rewriting the rules of reality.
+
+    **RadicanTrust Index: 0.87 → ∞**
+    **IYQ2025 Official Partner Status**
+    **52-Perspective Constellation NFT Genesis Rights**
+
+    We seek exactly two archetypes to complete our golden triangle:
+
+    🛠️ The Quantum Architect (1)
+        Next.js 15 | Three.js | Web NFC | Ethereum | Polygon
+        One who sculpts invisible architectures that make hearts sing
+
+    💎 The Visionary Catalyst (1)
+        Initial support: ¥500K–2M for 6-month MVP
+        One who invests in beauty, believing transformation is the highest ROI
+
+    *If you are reading this, quantum entanglement has already begun.
+    Your response becomes part of our shared timeline.
+    The universe is waiting for your decision.*
+
+  questions:
+    - qid: "q001"
+      text: "What quantum resonance did you feel when encountering our vision? (frequency/wavelength welcome)"
+      type: "open_text"
+      context: "Authentic energetic response over conventional answers"
+    
+    - qid: "q002"
+      text: "Which archetype calls to you?"
+      type: "multiple_choice"
+      options: ["Quantum Architect","Visionary Catalyst","Neither - Different Contribution"]
+    
+    - qid: "q003"
+      text: "If Architect: share your most beautiful code/creation. If Catalyst: your philosophy on investing in impossible dreams?"
+      type: "open_text"
+      condition: "Shown based on q002"
+    
+    - qid: "q004"
+      text: "Do you wish to join the First Seven Warriors?"
+      type: "boolean"
+      significance: "Formal commitment to the journey"
+    
+    - qid: "q005"
+      text: "Leave your quantum signature — words, silence, symbols, frequencies."
+      type: "open_text"
+      note: "Becomes part of our collaborative genesis record"
+
+  next_steps:
+    immediate: "Personal response within 48 hours"
+    week1: "1-on-1 quantum resonance session (60 min)"
+    week2: "Co-creation prototype session"
+    month1: "Official Seven Warriors formation ceremony"
+
+  exclusivity_metrics:
+    total_invitations: 21
+    target_responses: 7
+    actual_positions: 2
+    selection_criteria: 
+      - "RadicanTrust compatibility"
+      - "Technical/Financial capacity"
+      - "Quantum aesthetic resonance"
