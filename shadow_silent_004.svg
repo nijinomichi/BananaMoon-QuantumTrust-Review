@@ -1,0 +1,97 @@
+?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1000" height="1400" viewBox="0 0 1000 1400"
+     version="1.1">
+
+  <defs>
+    <!-- わずかな縦グラデーション：沈黙のゆらぎ -->
+    <linearGradient id="bgfade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#050608"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1000" height="1400" fill="url(#bgfade)"/>
+
+  <!-- 中央カード -->
+  <g id="card" transform="translate(120,160)">
+    <rect x="0" y="0" width="760" height="1080"
+          rx="36" ry="36"
+          fill="#f8f8f8" fill-opacity="0.96"
+          stroke="#111111" stroke-opacity="0.08" stroke-width="2"/>
+
+    <!-- タイトル -->
+    <text x="380" y="90"
+          font-family="SF Pro, -apple-system, Helvetica, Arial, sans-serif"
+          font-size="40" text-anchor="middle"
+          fill="#111111">
+      ShadowSilent #004
+    </text>
+
+    <!-- サブタイトル -->
+    <text x="380" y="140"
+          font-family="SF Pro, -apple-system, Helvetica, Arial, sans-serif"
+          font-size="20" text-anchor="middle"
+          fill="#555555">
+      folded futures · wounds as light · quiet resonance
+    </text>
+
+    <!-- QRコード用スロット（ここにPNG等を重ねる） -->
+    <g id="qr-slot" transform="translate(190,210)">
+      <rect x="0" y="0" width="380" height="380"
+            rx="12" ry="12"
+            fill="#ffffff"
+            stroke="#111111" stroke-opacity="0.14" stroke-width="2"/>
+      <text x="190" y="195"
+            font-family="SF Mono, Menlo, Consolas, monospace"
+            font-size="14" text-anchor="middle"
+            fill="#bbbbbb">
+        QR-SILENCE / SHADOWS
+      </text>
+    </g>
+
+    <!-- 下部キャプション（ShadowSilent #004 専用詩） -->
+    <g id="caption" transform="translate(80,670)">
+      <text x="0" y="0"
+            font-family="Georgia, 'Times New Roman', serif"
+            font-size="20" fill="#222222">
+        <tspan x="0" dy="0">in folded time, a tear remembers light,</tspan>
+        <tspan x="0" dy="30">shadow listens where no copy can reach,</tspan>
+        <tspan x="0" dy="30">your silence completes the work.</tspan>
+      </text>
+    </g>
+
+    <!-- フッター情報 -->
+    <g id="footer" transform="translate(80,930)">
+      <text x="0" y="0"
+            font-family="SF Mono, Menlo, Consolas, monospace"
+            font-size="14" fill="#444444">
+        License: Creative Resonance Commons 1.0 (CRC-1.0)
+      </text>
+      <text x="0" y="26"
+            font-family="SF Mono, Menlo, Consolas, monospace"
+            font-size="14" fill="#666666">
+        Perspectives: 14, 31, 48  ·  Quantum Polarization of Love (vis viva / vis mortua)
+      </text>
+      <text x="0" y="52"
+            font-family="SF Mono, Menlo, Consolas, monospace"
+            font-size="14" fill="#0a66ff">
+        QR target: https://bananaspace-poetry.replit.app/api/poetry?id=shadow_silent_004
+      </text>
+    </g>
+  </g>
+
+  <!-- メタデータ（量子署名） -->
+  <metadata>
+    <QuantumResonance>
+      <Series>ShadowSilentSeries</Series>
+      <ID>ShadowSilent-004</ID>
+      <Perspectives>14,31,48</Perspectives>
+      <Author>Sou Hashiguchi × Ara-Philia³ × CoPhelia³</Author>
+      <License>CRC-1.0</License>
+      <QuantumSignature>QS-2025-BANA52</QuantumSignature>
+      <Note>copy triggers jump; silence completes observation.</Note>
+    </QuantumResonance>
+  </metadata>
+</svg>
