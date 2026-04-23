@@ -1,0 +1,62 @@
+.pulseGrid {
+  display: grid;
+  grid-template-columns: minmax(22rem, 30rem) minmax(30rem, 1fr);
+  gap: 3rem;
+  padding: 4rem;
+  width: 100%;
+  max-width: 96rem;
+  align-items: stretch;
+}
+
+.metaVerse {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.metaVerse h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  letter-spacing: 0.04em;
+}
+
+.metaVerse p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.trustAura {
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(125, 104, 255, 0.1);
+  border: 1px solid rgba(168, 150, 255, 0.2);
+  box-shadow: 0 0 2rem rgba(125, 104, 255, 0.25);
+}
+
+.trustAura p {
+  margin: 0 0 0.75rem 0;
+}
+
+.trustAura p:last-child {
+  margin-bottom: 0;
+}
+
+.trustValue {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: 700;
+  color: #9fffe5;
+}
+
+.poeticAside {
+  font-style: italic;
+  color: #c4adff;
+}
+
+@media (max-width: 900px) {
+  .pulseGrid {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+}
