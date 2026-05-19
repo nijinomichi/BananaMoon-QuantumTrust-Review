@@ -17,6 +17,7 @@ describe("RadicanTrust resonance", () => {
     consent.recordTransparentConsent("test", {
       audience: "galactic",
       purpose: "unit-test",
+      chain: "polygon",
     });
 
     harmonizeRadicanTrust({

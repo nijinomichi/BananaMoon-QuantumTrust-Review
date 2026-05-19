@@ -17,6 +17,7 @@ describe("CoPhelia³ resonance engine", () => {
     consent.recordTransparentConsent("laboratory", {
       audience: "interdependence guild",
       purpose: "trust-audit",
+      chain: "ethereum",
     });
 
     const engine = createCoPhelia3Engine({ consentSignal: consent });
