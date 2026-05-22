@@ -1,0 +1,52 @@
+{
+  "name": "BananaSpace-AraPhilia3-branch-protection",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/main", "refs/heads/master"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "creation",
+      "parameters": {
+        "allowed": true
+      }
+    },
+    {
+      "type": "deletion",
+      "parameters": {
+        "blocked": true
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "required_checks": [
+          {
+            "context": "tests",
+            "integration_id": null
+          }
+        ],
+        "strict_required_status_checks_policy": true
+      }
+    },
+    {
+      "type": "required_pull_request",
+      "parameters": {
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": false,
+        "required_approving_review_count": 1
+      }
+    }
+  ],
+  "bypass_actors": [],
+  "originality_tag": {
+    "protocol": "Ara-Philia3 / CoPhelia3 QuantumArt Ruleset",
+    "radican_trust_hint": 0.84,
+    "note_ja": "量子美学プロトコルに基づき、mainブランチの歴史の連続性を守るためのルールセット。",
+    "note_en": "Protects the continuity of the main branch as part of the Ara-Philia³ QuantumArt protocol."
+  }
+}
