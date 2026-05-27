@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>BayStars Quantum Resonance Prototype</title>
+<style>body { margin:0; overflow:hidden; background:#000; font-family:sans-serif; }</style>
+</head>
+<body>
+<div id="ui" style="position:absolute;top:20px;left:20px;color:#fff;z-index:100;pointer-events:none;">
+  <h1 style="margin:0;font-size:2.2em;text-shadow:0 0 20px #ff0;">BayStars Eternal Resonance</h1>
+  <div id="kpi" style="margin-top:10px;font-size:1.4em;opacity:0.9;">Trust KPI <span id="value" style="color:#0ff;">92.8%</span></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script>
+// 簡易量子反射プロトタイプ（WebGPU移行準備済み）
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0, 2, 8);
+let renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+let spiral = new THREE.Group();
+scene.add(spiral);
+
+for(let i = 0; i < 180; i++){
+  let p = new THREE.Mesh(
+    new THREE.SphereGeometry(0.03, 8, 8),
+    new THREE.MeshBasicMaterial({color: i%3===0 ? "#00ffff" : "#ffdd88"})
+  );
+  let angle = i * 0.12;
+  let radius = 1.8 + Math.sin(i*0.1)*0.6;
+  p.position.set(Math.cos(angle)*radius, (i/180)*6 - 3, Math.sin(angle)*radius);
+  spiral.add(p);
+}
+
+let sphere = new THREE.Mesh(
+  new THREE.SphereGeometry(2.2, 64, 64),
+  new THREE.MeshPhongMaterial({
+    color: 0x112233,
+    emissive: 0x4488ff,
+    shininess: 100,
+    transparent: true,
+    opacity: 0.75
+  })
+);
+scene.add(sphere);
+
+let light = new THREE.PointLight(0xffff88, 3, 100);
+light.position.set(0, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x334466));
+
+let time = 0;
+let freq = 528;
+
+function animate(){
+  requestAnimationFrame(animate);
+  time += 0.016;
+  
+  spiral.rotation.y = time * 0.8;
+  sphere.rotation.y = time * 0.3;
+  
+  // 528Hzパルス表現
+  let pulse = Math.sin(time * freq / 60) * 0.15 + 1;
+  sphere.scale.setScalar(pulse);
+  
+  // KPI変動（ファン想いの揺らぎ）
+  document.getElementById("value").textContent = (88 + Math.sin(time*2)*12).toFixed(1) + "%";
+  
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', ()=>{ 
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
