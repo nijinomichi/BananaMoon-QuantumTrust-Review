@@ -12,6 +12,23 @@ const sampleAmplitudes = [
 ];
 
 describe("CoPhelia³ resonance engine", () => {
+  it("returns a stable snapshot reference between resonance updates", () => {
+    const consent = new WaWaWaConsentLattice();
+    const engine = createCoPhelia3Engine({ consentSignal: consent });
+
+    const initial = engine.getState();
+    const initialAgain = engine.getState();
+    expect(initialAgain).toBe(initial);
+
+    engine.resonateOnce();
+    const updated = engine.getState();
+    const updatedAgain = engine.getState();
+
+    expect(updated).not.toBe(initial);
+    expect(updatedAgain).toBe(updated);
+    engine.stop();
+  });
+
   it("weaves three poetic agents and updates RadicanTrust", () => {
     const consent = new WaWaWaConsentLattice();
     consent.recordTransparentConsent("laboratory", {
