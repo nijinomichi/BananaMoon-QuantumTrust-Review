@@ -1,0 +1,72 @@
+external_review:
+  version: "0.5.1-safe"
+  project: "BananaMoon-QuantumTrust-Review"
+  status: "draft_for_review"
+
+  purpose:
+    ja: "BananaMoon / QuantumTrust プロジェクトの外部レビュー、参加希望、信頼性確認のための草案プロトコル。"
+    en: "Draft protocol for external review, participation interest, and trust validation for the BananaMoon / QuantumTrust project."
+
+  scope:
+    - "BananaMoon / QuantumTrust review materials"
+    - "RadicanTrust™ reasoning and provenance notes"
+    - "Ara-Philia³ / CoPhelia³ conceptual review"
+    - "NFT metadata and CID verification"
+    - "Community feedback and contributor invitations"
+
+  important_notes:
+    - "This document is a draft and should not be treated as a public launch announcement."
+    - "RadicanTrust™ is used here as a poetic-ethical review index, not as a scientific measurement or investment guarantee."
+    - "The project does not provide crypto trading advice or financial advice."
+    - "No official partnership status should be claimed unless independently verified."
+    - "NFT metadata, CID, and minting details must be verified before public release."
+
+  review_questions:
+    - id: "q001"
+      category: "identity"
+      question_ja: "このリポジトリの目的は明確に伝わっていますか？"
+      question_en: "Is the purpose of this repository clear?"
+
+    - id: "q002"
+      category: "trust"
+      question_ja: "信頼できる点と、不安に感じる点は何ですか？"
+      question_en: "What feels trustworthy, and what feels concerning?"
+
+    - id: "q003"
+      category: "provenance"
+      question_ja: "NFTの来歴、CID、metadata確認について不足している情報はありますか？"
+      question_en: "Is any information missing regarding NFT provenance, CID, or metadata verification?"
+
+    - id: "q004"
+      category: "ethics"
+      question_ja: "公開前に弱めるべき表現、確認すべき主張はありますか？"
+      question_en: "Are there any claims that should be softened or verified before publication?"
+
+    - id: "q005"
+      category: "contribution"
+      question_ja: "あなたが協力できる領域があるとすれば何ですか？"
+      question_en: "If you could contribute, what area would it be?"
+
+  contributor_roles:
+    - role: "Reviewer"
+      description_ja: "README、CID調査、外部公開文の整合性を確認する人。"
+      description_en: "Reviews consistency across README, CID investigation, and public-facing text."
+
+    - role: "Technical Advisor"
+      description_ja: "GitHub、metadata.json、IPFS、NFTミント導線を確認できる人。"
+      description_en: "Checks GitHub, metadata.json, IPFS, and NFT minting flow."
+
+    - role: "Creative Co-Reviewer"
+      description_ja: "詩・美学・物語・展示文脈を読み、誇張と美しさのバランスを見る人。"
+      description_en: "Reviews poetry, aesthetics, narrative, and exhibition context."
+
+  safety_rules:
+    - "Do not send money or crypto to unsolicited NFT promotion accounts."
+    - "Do not connect wallets to unknown links."
+    - "Do not publish a CID as official until the asset is visually verified."
+    - "Do not imply official partnerships without evidence."
+    - "Keep uncertain claims marked as uncertain."
+
+  next_one_step:
+    ja: "README.md と CID_INVESTIGATION.md を確認したうえで、この external_review.yaml を草案としてレビューする。"
+    en: "Review this external_review.yaml as a draft after checking README.md and CID_INVESTIGATION.md."
