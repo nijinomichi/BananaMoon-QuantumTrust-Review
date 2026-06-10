@@ -1,24 +1,25 @@
-# TradeBot
+# BananaMoon-QuantumTrust-Review
 
-A crypto trading assistant that monitors markets, provides
-technical analysis, and sends alerts via Telegram.
+This repository is for reviewing and preserving the BananaMoon / QuantumTrust project materials, including reasoning logs, external review protocols, provenance notes, and related experimental art-code proposals.
 
-## Features
+## Current Status
 
-- Real-time price monitoring via CoinGecko API
-- Technical analysis with chart screenshots
-- Telegram alerts for price targets
-- Portfolio tracking dashboard at /dashboard
+This repository is currently under audit.
 
-## Setup
+The previous README content referred to an unrelated `TradeBot` crypto trading assistant. That content does not represent this project and should be treated as accidental template residue until proven otherwise.
 
-1. Deploy this template
-2. Add your COINGECKO_API_KEY in Secrets
-3. Connect Telegram in Channels
-4. Ask your agent to start monitoring
+## Project Scope
 
-## Commands
+- BananaMoon / QuantumTrust review materials
+- CoPhelia³ / Ara-Philia³ conceptual notes
+- RadicanTrust™ reasoning logs
+- NFT provenance and CID investigation notes
+- Experimental Pull Requests for quantum aesthetic interfaces
 
-- "Watch BTC above 100k" — sets a price alert
-- "Show my portfolio" — displays holdings
-- "Analyze ETH daily chart" — takes a screenshot
+## Safety Note
+
+Do not merge large architecture PRs until repository identity, README scope, and file structure are confirmed.
+
+## Next One Step
+
+Audit the commit history and identify when the unrelated TradeBot README entered `main`.
