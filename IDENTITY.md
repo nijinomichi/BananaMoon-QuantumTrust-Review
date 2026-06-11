@@ -28,6 +28,7 @@ Its purpose is to preserve project identity, verify provenance, and prevent conf
 
 - `README.md` has been restored from unrelated TradeBot content.
 - `CID_INVESTIGATION.md` has been updated with the verified BananaMoon metadata artifact.
+- `SOUL.md` has been restored from TradeBot template residue into a provenance-oriented repository soul.
 - `IDENTITY.md` previously contained TradeBot / Pinata Agents template residue and is now being restored.
 - Large architecture PRs should remain on hold until repository identity and provenance are stable.
 
