@@ -1,38 +1,39 @@
-BananaMoon-QuantumTrust-Review
+# BananaMoon-QuantumTrust-Review
 
 This repository preserves and reviews the BananaMoon / QuantumTrust project materials.
 
 It serves as a GitHub-side provenance field: a place to hold reasoning logs, external review protocols, CID investigation notes, restoration records, and experimental art-code proposals without confusing drafts, tests, and verified artifacts.
 
-Current Status
+## Current Status
 
 This repository is currently under audit and restoration.
 
-Earlier repository content referred to an unrelated TradeBot crypto trading assistant. That material does not represent the BananaMoon / QuantumTrust project and is now treated as historical template residue unless independently proven otherwise.
+Earlier repository content referred to an unrelated `TradeBot` crypto trading assistant. That material does not represent the BananaMoon / QuantumTrust project and is now treated as historical template residue unless independently proven otherwise.
 
 The current restoration principle is:
 
-Preserve first.
-Classify carefully.
-Verify before claiming.
-Archive without erasing.
+> Preserve first.  
+> Classify carefully.  
+> Verify before claiming.  
+> Archive without erasing.
 
-Project Scope
+## Project Scope
 
 This repository may contain:
 
-* BananaMoon / QuantumTrust review materials
-* CoPhelia³ / Ara-Philia³ conceptual notes
-* RadicanTrust™ reasoning logs
-* NFT provenance and CID investigation notes
-* external review protocols
-* experimental pull requests for quantum-aesthetic interfaces
-* archived template artifacts retained for historical clarity
+- BananaMoon / QuantumTrust review materials
+- CoPhelia³ / Ara-Philia³ conceptual notes
+- RadicanTrust™ reasoning logs
+- NFT provenance and CID investigation notes
+- External review protocols
+- Experimental pull requests for quantum-aesthetic interfaces
+- Archived template artifacts retained for historical clarity
 
-Repository Map
+## Repository Map
 
 Top-level layout of the review / provenance materials:
 
+```text
 .
 |-- README.md                 # This file: scope, status, and map
 |-- IDENTITY.md               # Repository identity and scope boundaries
@@ -60,27 +61,30 @@ Top-level layout of the review / provenance materials:
 |-- app/                      # Experimental Next.js scaffold, pending review
 |-- src/                      # Experimental TypeScript scaffold, pending review
 `-- package.json, tsconfig.json, next.config.mjs, vitest.config.ts, ...
+```
 
-Note: docs/archive/ holds historical TradeBot / template artifacts that are not used by Drift at runtime. Drift’s live identity is sourced from the Pinata Agents metadata store, not from this repository’s manifest.
+Note: `docs/archive/` holds historical TradeBot / template artifacts that are not used by Drift at runtime. Drift's live identity is sourced from the Pinata Agents metadata store, not from this repository's manifest.
 
-Verified Primary Artifact
+## Verified Primary Artifact
 
-The current verified BananaMoon metadata artifact is documented in CID_INVESTIGATION.md and summarized in PROVENANCE.md.
+The current verified BananaMoon metadata artifact is documented in `CID_INVESTIGATION.md` and summarized in `PROVENANCE.md`.
 
 Canonical metadata and test upload results must remain separate.
 
 Do not confuse:
 
-1. verified original metadata,
-2. current app-served NFT metadata,
+1. Verified original metadata.
+2. Current app-served NFT metadata.
 3. Pinata upload test CIDs.
 
 Generated test CIDs are communication tests only.
 
+```yaml
 testOnly: true
 canonical: false
+```
 
-Safety Note
+## Safety Note
 
 Do not merge large architecture PRs until repository identity, README scope, file structure, and provenance boundaries are confirmed.
 
@@ -90,8 +94,8 @@ Do not present poetic indices, such as RadicanTrust™, as scientific measuremen
 
 Do not imply official partnerships without independent verification.
 
-Next One Step
+## Next One Step
 
-Audit the commit history and identify when the unrelated TradeBot README entered main.
+Audit the commit history and identify when the unrelated TradeBot README entered `main`.
 
-After that, review app/, src/, and dialogue/ to decide whether they are active, experimental, or archival.
+After that, review `app/`, `src/`, and `dialogue/` to decide whether they are active, experimental, or archival.
