@@ -50,6 +50,7 @@ Restoration actions completed:
 - `CID_INVESTIGATION.md` added and updated with verified metadata evidence.
 - `SOUL.md` restored from TradeBot template residue into a provenance-oriented repository soul.
 - `IDENTITY.md` restored to define repository scope, safety boundaries, and verified artifact status.
+- TradeBot-related `manifest.json` and `TOOLS.md` template residue was identified as unused by Drift at runtime and archived as historical template artifacts.
 
 ## What This Repository Is
 
