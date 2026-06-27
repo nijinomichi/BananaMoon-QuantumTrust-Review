@@ -45,3 +45,8 @@ Vitest ensures the Born rule normalization, RadicanTrust harmonics, and CoPhelia
 - RadicanTrust™ stays above 0.87 by design, with poetic signals explaining every shift.
 - The WaWaWa Protocol guarantees explicit, timestamped consent with cosmic accessibility.
 - All animations align with the 528 Hz love frequency to transmute probabilities into compassionate visuals.
+
+## Core Poetic Protocols
+
+- [Consent Lattice v1.0](archive/poetry/consent_lattice_v1.md)
+- [Recursive Seed Protocol v1.0](archive/poetry/recursive_seed_protocol_v1.md)
