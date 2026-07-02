@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate repository data files and local Markdown links."""
+"""Validate repository data files and local links in active Markdown records."""
 
 from __future__ import annotations
 
@@ -47,6 +47,24 @@ def validate_yaml() -> list[str]:
     return errors
 
 
+def active_markdown_paths() -> list[Path]:
+    paths = list(ROOT.glob("*.md"))
+
+    docs = ROOT / "docs"
+    if docs.exists():
+        paths.extend(
+            path
+            for path in docs.rglob("*.md")
+            if "archive" not in path.relative_to(docs).parts
+        )
+
+    poetry = ROOT / "archive" / "poetry"
+    if poetry.exists():
+        paths.extend(poetry.rglob("*.md"))
+
+    return sorted(set(paths))
+
+
 def link_target(raw_target: str) -> str:
     target = raw_target.strip()
     if target.startswith("<") and target.endswith(">"):
@@ -69,10 +87,8 @@ def validate_markdown_links() -> list[str]:
         "#",
     )
 
-    for path in sorted(ROOT.rglob("*.md")):
+    for path in active_markdown_paths():
         relative = path.relative_to(ROOT)
-        if not included(relative):
-            continue
         try:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeError) as exc:
@@ -110,7 +126,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("Repository validation passed: JSON, YAML, and local Markdown links are valid.")
+    print("Repository validation passed: JSON, YAML, and active Markdown links are valid.")
     return 0
 
 
