@@ -65,7 +65,7 @@ Do not treat these as equivalent:
 - copyright ownership
 - token ownership
 
-Each is a different claim requiring different evidence. Software systems apparently needed eight ways to say “this points to something,” because one would have been dangerously comprehensible.
+Each is a distinct claim requiring its own evidence.
 
 ## Gateway failures
 
