@@ -1,101 +1,91 @@
 # BananaMoon-QuantumTrust-Review
 
-This repository preserves and reviews the BananaMoon / QuantumTrust project materials.
+**Status:** active audit and restoration  
+**Canonical review date:** 2026-07-02  
+**Base branch:** `main`
 
-It serves as a GitHub-side provenance field: a place to hold reasoning logs, external review protocols, CID investigation notes, restoration records, and experimental art-code proposals without confusing drafts, tests, and verified artifacts.
+This repository is the public, reviewable archive for the BananaMoon / QuantumTrust project.
 
-## Current Status
+It preserves provenance records, reasoning logs, consent notes, external-review protocols, poetic protocol seeds, restoration evidence, and experimental art-code proposals. Its central sequence is:
 
-This repository is currently under audit and restoration.
+> **Failure → Trust → Creation**
 
-Earlier repository content referred to an unrelated `TradeBot` crypto trading assistant. That material does not represent the BananaMoon / QuantumTrust project and is now treated as historical template residue unless independently proven otherwise.
+The repository is primarily an **archive and review surface**. It must not be assumed to be the live runtime application.
 
-The current restoration principle is:
+## Canonical documents
 
-> Preserve first.  
-> Classify carefully.  
-> Verify before claiming.  
-> Archive without erasing.
+Read these first:
 
-## Project Scope
+- [`docs/CANONICAL_STATE.md`](docs/CANONICAL_STATE.md) — what is canonical, verified, experimental, or historical
+- [`docs/PROVENANCE.md`](docs/PROVENANCE.md) — conservative provenance record and evidence boundaries
+- [`docs/AUDIT_REPORT.md`](docs/AUDIT_REPORT.md) — audit findings, branch comparison, and unresolved questions
+- [`archive/poetry/README.md`](archive/poetry/README.md) — rules for preserving Ara-Philia³ and related poetic protocol seeds
 
-This repository may contain:
+Earlier top-level records such as [`PROVENANCE.md`](PROVENANCE.md), [`CID_INVESTIGATION.md`](CID_INVESTIGATION.md), [`IDENTITY.md`](IDENTITY.md), and [`SOUL.md`](SOUL.md) remain preserved as part of the repository history. Where claims differ, the dated documents under `docs/` define the current audit boundary.
 
-- BananaMoon / QuantumTrust review materials
-- CoPhelia³ / Ara-Philia³ conceptual notes
-- RadicanTrust™ reasoning logs
-- NFT provenance and CID investigation notes
-- External review protocols
-- Experimental pull requests for quantum-aesthetic interfaces
-- Archived template artifacts retained for historical clarity
+## Verified artifact boundary
 
-## Repository Map
+The project owner has supplied the following BananaMoon records:
 
-Top-level layout of the review / provenance materials:
+- Metadata CID: `bafkreiakqycxg6lsy7mzzycbn36mrvxzdu4iovedmiaipjaui6oogq2gxm`
+- Image CID: `bafkreibodjqc27g6ijvcylghabhq6bvwc4ocf35jkhxyugholam4izqmre`
+- Metadata filename: `bananamoon_metadata.json`
+- SHA-256 supplied in the present task: begins with `0a860573`
 
-```text
-.
-|-- README.md                 # This file: scope, status, and map
-|-- IDENTITY.md               # Repository identity and scope boundaries
-|-- PROVENANCE.md             # GitHub-side provenance summary
-|-- CID_INVESTIGATION.md      # Metadata / CID verification notes
-|-- SOUL.md                   # Provenance-oriented repository soul
-|-- LICENSE                   # Repository license
-|-- ARTWORK_LICENSE-Creative-Resonance-Commons-1.0.md
-|-- dialogue/
-|   `-- AI-Dialogue-as-Art-Journey.md
-|-- docs/
-|   |-- provenance/
-|   |   `-- reasoning_log.yaml
-|   |-- review/
-|   |   `-- external_review.yaml
-|   `-- archive/              # Historical TradeBot / template artifacts, not active
-|       |-- manifest.tradebot-template.json
-|       |-- TOOLS.tradebot-template.md
-|       |-- AGENTS.md
-|       |-- ruleset-bananaspace-main.json
-|       |-- baystars-quantum-resonance.html
-|       |-- baystars-quantum-resonance-webgpu.html
-|       |-- workspace              # Archived single file, not a directory
-|       `-- にとりら              # Archived single file, not a directory
-|-- app/                      # Experimental Next.js scaffold, pending review
-|-- src/                      # Experimental TypeScript scaffold, pending review
-`-- package.json, tsconfig.json, next.config.mjs, vitest.config.ts, ...
-```
+The full evidentiary status and unresolved verification work are recorded in [`docs/PROVENANCE.md`](docs/PROVENANCE.md). Missing values are not reconstructed or guessed.
 
-Note: `docs/archive/` holds historical TradeBot / template artifacts that are not used by Drift at runtime. Drift's live identity is sourced from the Pinata Agents metadata store, not from this repository's manifest.
+## Repository layers
 
-## Verified Primary Artifact
+### Canonical archive
 
-The current verified BananaMoon metadata artifact is documented in `CID_INVESTIGATION.md` and summarized in `PROVENANCE.md`.
+- identity and scope documents
+- provenance and CID records
+- audit and restoration reports
+- reasoning and external-review records
+- preserved poetic protocols with authorship and date metadata
 
-Canonical metadata and test upload results must remain separate.
+### Experimental runtime
 
-Do not confuse:
+The existing `app/`, `src/`, Node/Next.js configuration, and tests are experimental software materials. They may be useful as artwork prototypes, but their presence does not make this repository a deployed application.
 
-1. Verified original metadata.
-2. Current app-served NFT metadata.
-3. Pinata upload test CIDs.
+### Historical evidence
 
-Generated test CIDs are communication tests only.
+`docs/archive/` contains unrelated or uncertain legacy materials retained for traceability. In particular, TradeBot, cryptocurrency assistant, Telegram monitoring, dashboard, and sample-template materials do **not** represent the BananaMoon / QuantumTrust project.
 
-```yaml
-testOnly: true
-canonical: false
-```
+Historical evidence should be classified before deletion. Preservation does not imply endorsement or active use.
 
-## Safety Note
+## GitHub, Replit, and Notion
 
-Do not merge large architecture PRs until repository identity, README scope, file structure, and provenance boundaries are confirmed.
+- **GitHub:** canonical public record, source history, issues, reviews, and Pull Requests
+- **Replit:** runtime experiments and interactive artwork prototypes
+- **Notion:** research context, internal archaeology, decision records, and long-form working notes
 
-Do not treat archived template files as active project configuration.
+GitHub is the final reference for versioned public claims. Replit behavior and Notion notes must be linked and dated before they are treated as evidence.
 
-Do not present poetic indices, such as RadicanTrust™, as scientific measurements, legal findings, investment signals, or financial guarantees.
+## Branch safety
 
-Do not imply official partnerships without independent verification.
+The branch `codex/create-core-architecture-and-modules-1tgmqm` is substantially stale and diverged from `main`. It must not be merged wholesale. See [`docs/AUDIT_REPORT.md`](docs/AUDIT_REPORT.md) for the selective review.
 
-## Next One Step
+Repository rules for restoration work:
 
-Audit the commit history and identify when the unrelated TradeBot README entered `main`.
+- do not commit directly to `main`
+- do not force-push or rewrite history
+- do not delete provenance evidence before documenting it
+- do not publish secrets, tokens, private keys, or credentials
+- do not mint NFTs or deploy Replit automatically
+- do not imply scientific measurement, financial return, or official partnership without evidence
 
-After that, review `app/`, `src/`, and `dialogue/` to decide whether they are active, experimental, or archival.
+## Validation
+
+The repository includes minimal CI for:
+
+- JSON syntax
+- YAML syntax
+- local Markdown-link integrity
+- existing executable tests when a Node test suite is present
+
+The validation is intentionally small. A review archive does not need a cathedral of dependencies merely to prove that braces close correctly.
+
+## Current next step
+
+Review the Pull Request produced from `audit/restore-main-2026-07-02`, confirm the evidence boundaries, and merge only after CI and human review pass.
