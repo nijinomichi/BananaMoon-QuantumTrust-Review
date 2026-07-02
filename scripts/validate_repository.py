@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate JSON files and local Markdown links without extra dependencies."""
+"""Validate repository data files and local Markdown links."""
 
 from __future__ import annotations
 
@@ -8,6 +8,8 @@ import re
 import sys
 from pathlib import Path
 from urllib.parse import unquote
+
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED_PARTS = {".git", ".next", "node_modules"}
@@ -31,11 +33,24 @@ def validate_json() -> list[str]:
     return errors
 
 
+def validate_yaml() -> list[str]:
+    errors: list[str] = []
+    paths = sorted([*ROOT.rglob("*.yml"), *ROOT.rglob("*.yaml")])
+    for path in paths:
+        if not included(path.relative_to(ROOT)):
+            continue
+        try:
+            with path.open("r", encoding="utf-8") as handle:
+                yaml.safe_load(handle)
+        except (OSError, UnicodeError, yaml.YAMLError) as exc:
+            errors.append(f"YAML {path.relative_to(ROOT)}: {exc}")
+    return errors
+
+
 def link_target(raw_target: str) -> str:
     target = raw_target.strip()
     if target.startswith("<") and target.endswith(">"):
         target = target[1:-1]
-    # Remove an optional Markdown title after the URL/path.
     if " \"" in target:
         target = target.split(" \"", 1)[0]
     if " '" in target:
@@ -73,23 +88,29 @@ def validate_markdown_links() -> list[str]:
             if not target:
                 continue
 
-            candidate = (ROOT / target.lstrip("/")) if target.startswith("/") else (path.parent / target)
+            candidate = (
+                ROOT / target.lstrip("/")
+                if target.startswith("/")
+                else path.parent / target
+            )
             if not candidate.exists():
                 line = text.count("\n", 0, match.start()) + 1
-                errors.append(f"Markdown {relative}:{line}: missing local target {target}")
+                errors.append(
+                    f"Markdown {relative}:{line}: missing local target {target}"
+                )
 
     return errors
 
 
 def main() -> int:
-    errors = validate_json() + validate_markdown_links()
+    errors = validate_json() + validate_yaml() + validate_markdown_links()
     if errors:
         print("Repository validation failed:")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("Repository validation passed: JSON and local Markdown links are valid.")
+    print("Repository validation passed: JSON, YAML, and local Markdown links are valid.")
     return 0
 
 
