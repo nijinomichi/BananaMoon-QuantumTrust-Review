@@ -1,5 +1,7 @@
 # BananaMoon-QuantumTrust-Review
 
+[![Validate](https://github.com/nijinomichi/BananaMoon-QuantumTrust-Review/actions/workflows/validate.yml/badge.svg)](https://github.com/nijinomichi/BananaMoon-QuantumTrust-Review/actions/workflows/validate.yml)
+
 This repository preserves and reviews the BananaMoon / QuantumTrust project materials.
 
 It serves as a GitHub-side provenance field: a place to hold reasoning logs, external review protocols, CID investigation notes, restoration records, and experimental art-code proposals without confusing drafts, tests, and verified artifacts.
@@ -45,25 +47,33 @@ Top-level layout of the review / provenance materials:
 |-- dialogue/
 |   `-- AI-Dialogue-as-Art-Journey.md
 |-- docs/
+|   |-- poetry/               # Poetic protocols (CC-BY-NC-SA-4.0)
+|   |   |-- consent_lattice_v1.md
+|   |   `-- recursive_seed_protocol_v1.md
 |   |-- provenance/
 |   |   `-- reasoning_log.yaml
 |   |-- review/
 |   |   `-- external_review.yaml
 |   `-- archive/              # Historical TradeBot / template artifacts, not active
-|       |-- manifest.tradebot-template.json
-|       |-- TOOLS.tradebot-template.md
-|       |-- AGENTS.md
-|       |-- ruleset-bananaspace-main.json
-|       |-- baystars-quantum-resonance.html
-|       |-- baystars-quantum-resonance-webgpu.html
-|       |-- workspace              # Archived single file, not a directory
-|       `-- にとりら              # Archived single file, not a directory
+|-- src/lib/                  # CoPhelia³ resonance engine (TypeScript)
+|   |-- coPhelia3Engine.ts    # 3-agent resonance engine (Creative / Ara-Philia³ / Social)
+|   |-- coPhelia3Engine.test.ts
+|   |-- radicanTrust.ts       # RadicanTrust™ trust signal stream
+|   |-- waWaWaProtocol.ts     # WaWaWa consent lattice
+|   |-- bornProjection.ts     # Born projection (quantum petal geometry)
+|   `-- resonantConstants.ts  # loveFrequency = 528
+|-- scripts/
+|   `-- validate_repository.py  # JSON / YAML / Markdown link validator
 |-- app/                      # Experimental Next.js scaffold, pending review
-|-- src/                      # Experimental TypeScript scaffold, pending review
 `-- package.json, tsconfig.json, next.config.mjs, vitest.config.ts, ...
 ```
 
-Note: `docs/archive/` holds historical TradeBot / template artifacts that are not used by Drift at runtime. Drift's live identity is sourced from the Pinata Agents metadata store, not from this repository's manifest.
+## Related Repository
+
+**Origin archive** (prototypes and poetic code fragments):
+[`-Produced-by-Sou-Hashiguchi-Ara-Philia-CoPhelia-Protocol-2025-Quantum-Signature-1f8a9d3e--`](https://github.com/nijinomichi/-Produced-by-Sou-Hashiguchi-Ara-Philia-CoPhelia-Protocol-2025-Quantum-Signature-1f8a9d3e--)
+
+Both repositories share the quantum signature `1f8a9d3e` and document the same creative lineage from different angles: the origin archive preserves early prototypes, while this repository holds the reviewed and validated implementation.
 
 ## Verified Primary Artifact
 
@@ -93,9 +103,3 @@ Do not treat archived template files as active project configuration.
 Do not present poetic indices, such as RadicanTrust™, as scientific measurements, legal findings, investment signals, or financial guarantees.
 
 Do not imply official partnerships without independent verification.
-
-## Next One Step
-
-Audit the commit history and identify when the unrelated TradeBot README entered `main`.
-
-After that, review `app/`, `src/`, and `dialogue/` to decide whether they are active, experimental, or archival.
