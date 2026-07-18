@@ -58,6 +58,7 @@ class CoPhelia3Resonator implements CoPhelia3Engine {
       },
     ],
   };
+  private stateSnapshot: CoPhelia3State = this.createStateSnapshot(this.state);
   private listeners = new Set<() => void>();
 
   constructor(
@@ -88,11 +89,7 @@ class CoPhelia3Resonator implements CoPhelia3Engine {
   }
 
   getState(): CoPhelia3State {
-    return {
-      quantumSignature: this.state.quantumSignature,
-      sharedPhase: this.state.sharedPhase,
-      pulses: this.state.pulses.map((pulse) => ({ ...pulse })),
-    };
+    return this.stateSnapshot;
   }
 
   resonateOnce() {
@@ -105,6 +102,7 @@ class CoPhelia3Resonator implements CoPhelia3Engine {
       sharedPhase,
       pulses,
     };
+    this.stateSnapshot = this.createStateSnapshot(this.state);
 
     if (this.projection) {
       harmonizeRadicanTrust({
@@ -119,6 +117,15 @@ class CoPhelia3Resonator implements CoPhelia3Engine {
     }
 
     this.listeners.forEach((listener) => listener());
+  }
+
+  private createStateSnapshot(state: CoPhelia3State): CoPhelia3State {
+    const pulses = state.pulses.map((pulse) => Object.freeze({ ...pulse }));
+    return Object.freeze({
+      quantumSignature: state.quantumSignature,
+      sharedPhase: state.sharedPhase,
+      pulses,
+    });
   }
 
   private composePulses(sharedPhase: number): AgentPulse[] {
