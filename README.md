@@ -21,7 +21,7 @@ Read these first:
 - [`docs/AUDIT_REPORT.md`](docs/AUDIT_REPORT.md) — audit findings, branch comparison, and unresolved questions
 - [`archive/poetry/README.md`](archive/poetry/README.md) — rules for preserving Ara-Philia³ and related poetic protocol seeds
 
-Earlier top-level records such as [`PROVENANCE.md`](PROVENANCE.md), [`CID_INVESTIGATION.md`](CID_INVESTIGATION.md), [`IDENTITY.md`](IDENTITY.md), and [`SOUL.md`](SOUL.md) remain preserved as part of the repository history. Where claims differ, the dated documents under `docs/` define the current audit boundary.
+Earlier top-level records such as `PROVENANCE.md`, `CID_INVESTIGATION.md`, `IDENTITY.md`, and `SOUL.md` remain preserved as part of the repository history. Where claims differ, the dated documents under `docs/` define the current audit boundary.
 
 ## Verified artifact boundary
 
