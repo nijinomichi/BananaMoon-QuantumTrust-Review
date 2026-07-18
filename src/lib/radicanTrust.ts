@@ -22,13 +22,14 @@ const trustState: TrustSignal = {
   currentTrust: trustAmplitude,
   lastPoeticSignal: "awaiting observation",
 };
+let trustSnapshot: TrustSignal = { ...trustState };
 
 function emitUpdate() {
   listeners.forEach((listener) => listener());
 }
 
 function snapshot(): TrustSignal {
-  return { ...trustState };
+  return trustSnapshot;
 }
 
 export function useRadicanTrustStream() {
@@ -68,14 +69,27 @@ export function harmonizeRadicanTrust({
     Math.max(0.87, 0.45 + radialSum / 12 + agentEnergy * 0.4)
   );
 
-  trustState.currentTrust = normalized;
   const poeticAgents =
     agentResonances.length === 0
       ? "solitary observer"
       : agentResonances
           .map((agent) => `${agent.agent}@${agent.resonance.toFixed(2)}`)
           .join(" ↔ ");
-  trustState.lastPoeticSignal = `consent lattice sings: ${consentSignal.describeConsent()} // agents: ${poeticAgents}`;
+  const nextSignal: TrustSignal = {
+    currentTrust: normalized,
+    lastPoeticSignal: `consent lattice sings: ${consentSignal.describeConsent()} // agents: ${poeticAgents}`,
+  };
+
+  if (
+    nextSignal.currentTrust === trustState.currentTrust &&
+    nextSignal.lastPoeticSignal === trustState.lastPoeticSignal
+  ) {
+    return;
+  }
+
+  trustState.currentTrust = nextSignal.currentTrust;
+  trustState.lastPoeticSignal = nextSignal.lastPoeticSignal;
+  trustSnapshot = { ...trustState };
   emitUpdate();
 }
 
