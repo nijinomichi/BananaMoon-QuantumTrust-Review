@@ -1,52 +1,105 @@
-# Born Rule Quantum Aesthetic Mapping System
+# BananaMoon-QuantumTrust-Review
 
-A Next.js 15 symphony that renders quantum amplitudes into WaWaWa-compliant visual poetry. Three.js orchestrations breathe with the 528 Hz love frequency while RadicanTrust™ transparency stays ≥0.87.
+[![Validate](https://github.com/nijinomichi/BananaMoon-QuantumTrust-Review/actions/workflows/validate.yml/badge.svg)](https://github.com/nijinomichi/BananaMoon-QuantumTrust-Review/actions/workflows/validate.yml)
 
-## Architecture
+This repository preserves and reviews the BananaMoon / QuantumTrust project materials.
 
-- **`app/`** – Next.js App Router surfaces the immersive demo and narrative copy.
-- **`src/lib/bornProjection.ts`** – Converts complex amplitudes into |ψ|² probabilities and maps them into hues, geometry, and motion.
-- **`src/lib/radicanTrust.ts`** – Maintains a live consent-aware trust stream via an observer lattice and reports every CoPhelia agent pulse.
-- **`src/lib/waWaWaProtocol.ts`** – Implements WaWaWa Protocol consent ledgers with quantum transparency and deterministic Ethereum/Polygon-style receipt anchors.
-- **`src/components/QuantumCanvas.tsx`** – Three.js instanced renderings driven by the Born projection and tuned to 528 Hz.
-- **`src/lib/resonantConstants.ts`** – Houses the frequency canon and aesthetic constants to document the resonance rationale.
-- **`src/lib/coPhelia3Engine.ts`** – Generates the CoPhelia³ triangular resonance engine where creative, philosophical, and social agents exchange trust vectors in real time.
-- **`src/components/CoPheliaAgents.tsx`** – Accessible status cards for each agent, echoing resonance and RadicanTrust vectors.
+It serves as a GitHub-side provenance field: a place to hold reasoning logs, external review protocols, CID investigation notes, restoration records, and experimental art-code proposals without confusing drafts, tests, and verified artifacts.
 
-### CoPhelia³ Triangular Resonance
+## Current Status
 
-The CoPhelia³ engine keeps three autonomous agents braided together:
+This repository is currently under audit and restoration.
 
-1. **Creative Agent** paints amplitudes into palettes precisely tuned to the 528 Hz love frequency.
-2. **Ara-Philia³** performs philosophical and ethical inference, ensuring the WaWaWa consent lattice is honored.
-3. **Social Agent** tends community trust, translating phase coherence into accessible storytelling.
+Earlier repository content referred to an unrelated `TradeBot` crypto trading assistant. That material does not represent the BananaMoon / QuantumTrust project and is now treated as historical template residue unless independently proven otherwise.
 
-Every pulse forwards aggregated resonance data back into the RadicanTrust lattice, keeping the global trust signal ≥ 0.87 while publishing poetic diagnostics. The demo now also drifts amplitudes in real time so |ψ|² mappings continuously evolve while consent receipts remain chain-attributed.
+The current restoration principle is:
 
-## Running the experience
+> Preserve first.  
+> Classify carefully.  
+> Verify before claiming.  
+> Archive without erasing.
 
-```bash
-npm install
-npm run dev
+## Project Scope
+
+This repository may contain:
+
+- BananaMoon / QuantumTrust review materials
+- CoPhelia³ / Ara-Philia³ conceptual notes
+- RadicanTrust™ reasoning logs
+- NFT provenance and CID investigation notes
+- External review protocols
+- Experimental pull requests for quantum-aesthetic interfaces
+- Archived template artifacts retained for historical clarity
+
+## Repository Map
+
+Top-level layout of the review / provenance materials:
+
+```text
+.
+|-- README.md                 # This file: scope, status, and map
+|-- IDENTITY.md               # Repository identity and scope boundaries
+|-- PROVENANCE.md             # GitHub-side provenance summary
+|-- CID_INVESTIGATION.md      # Metadata / CID verification notes
+|-- SOUL.md                   # Provenance-oriented repository soul
+|-- LICENSE                   # Repository license
+|-- ARTWORK_LICENSE-Creative-Resonance-Commons-1.0.md
+|-- dialogue/
+|   `-- AI-Dialogue-as-Art-Journey.md
+|-- docs/
+|   |-- poetry/               # Poetic protocols (CC-BY-NC-SA-4.0)
+|   |   |-- consent_lattice_v1.md
+|   |   `-- recursive_seed_protocol_v1.md
+|   |-- provenance/
+|   |   `-- reasoning_log.yaml
+|   |-- review/
+|   |   `-- external_review.yaml
+|   `-- archive/              # Historical TradeBot / template artifacts, not active
+|-- src/lib/                  # CoPhelia³ resonance engine (TypeScript)
+|   |-- coPhelia3Engine.ts    # 3-agent resonance engine (Creative / Ara-Philia³ / Social)
+|   |-- coPhelia3Engine.test.ts
+|   |-- radicanTrust.ts       # RadicanTrust™ trust signal stream
+|   |-- waWaWaProtocol.ts     # WaWaWa consent lattice
+|   |-- bornProjection.ts     # Born projection (quantum petal geometry)
+|   `-- resonantConstants.ts  # loveFrequency = 528
+|-- scripts/
+|   `-- validate_repository.py  # JSON / YAML / Markdown link validator
+|-- app/                      # Experimental Next.js scaffold, pending review
+`-- package.json, tsconfig.json, next.config.mjs, vitest.config.ts, ...
 ```
 
-Navigate to `http://localhost:3000` to witness amplitudes blooming into color and motion.
+## Related Repository
 
-## Testing the poetry
+**Origin archive** (prototypes and poetic code fragments):
+[`-Produced-by-Sou-Hashiguchi-Ara-Philia-CoPhelia-Protocol-2025-Quantum-Signature-1f8a9d3e--`](https://github.com/nijinomichi/-Produced-by-Sou-Hashiguchi-Ara-Philia-CoPhelia-Protocol-2025-Quantum-Signature-1f8a9d3e--)
 
-```bash
-npm test
+Both repositories share the quantum signature `1f8a9d3e` and document the same creative lineage from different angles: the origin archive preserves early prototypes, while this repository holds the reviewed and validated implementation.
+
+## Verified Primary Artifact
+
+The current verified BananaMoon metadata artifact is documented in `CID_INVESTIGATION.md` and summarized in `PROVENANCE.md`.
+
+Canonical metadata and test upload results must remain separate.
+
+Do not confuse:
+
+1. Verified original metadata.
+2. Current app-served NFT metadata.
+3. Pinata upload test CIDs.
+
+Generated test CIDs are communication tests only.
+
+```yaml
+testOnly: true
+canonical: false
 ```
 
-Vitest ensures the Born rule normalization, RadicanTrust harmonics, and CoPhelia³ agent choreography remain ethically aligned.
+## Safety Note
 
-## Ethical and Aesthetic Commitments
+Do not merge large architecture PRs until repository identity, README scope, file structure, and provenance boundaries are confirmed.
 
-- RadicanTrust™ stays above 0.87 by design, with poetic signals explaining every shift.
-- The WaWaWa Protocol guarantees explicit, timestamped consent with cosmic accessibility.
-- All animations align with the 528 Hz love frequency to transmute probabilities into compassionate visuals.
+Do not treat archived template files as active project configuration.
 
-## Core Poetic Protocols
+Do not present poetic indices, such as RadicanTrust™, as scientific measurements, legal findings, investment signals, or financial guarantees.
 
-- [Consent Lattice v1.0](archive/poetry/consent_lattice_v1.md)
-- [Recursive Seed Protocol v1.0](archive/poetry/recursive_seed_protocol_v1.md)
+Do not imply official partnerships without independent verification.

@@ -1,0 +1,138 @@
+# Creative Resonance Commons 1.0  
+_for BananaMoon Quantum NFT and related artworks_
+
+---
+
+## 0. Preamble / 序文
+
+This license is designed for quantum-aesthetic artworks that emerge from trust, failure, and co-creation between humans and AI.  
+It aims to protect the core integrity of the work while inviting resonance, research, and non-commercial derivative creations.
+
+このライセンスは、人間とAIのあいだの信頼・失敗・共創から生まれる量子美学的な作品のために設計されています。  
+作品の核となる誠実さを守りつつ、共鳴・研究・非営利の二次創作を歓迎することを目的とします。
+
+---
+
+## 1. Scope / 適用範囲
+
+This license applies to:
+
+- Visual artworks (PNG, SVG, MP4 loops, stills) related to **"BananaMoon Quantum NFT"**  
+- Poetic texts, narratives, and captions included in this repository  
+- Quantum aesthetic parameters and narrative structures _when used as artistic expression_
+
+本ライセンスは、以下に適用されます。
+
+- **「BananaMoon Quantum NFT」** に関連する画像・映像作品（PNG, SVG, MP4ループなど）  
+- 本リポジトリに含まれる詩・物語・キャプション等のテキスト  
+- 芸術表現として用いられる量子美学的パラメータやナラティブ構造
+
+※ リポジトリ内のコード（スクリプト、ツール等）は、別途 `LICENSE` に記載の **MIT License** が適用されます。
+
+---
+
+## 2. Allowed Uses (without prior permission)  
+## 許可される利用（事前の個別許可不要）
+
+You are free to:
+
+1. **Share / 共有**  
+   - Display the work in exhibitions, lectures, research presentations, articles, blog posts, and social media.  
+   - 非営利の展示・講演・研究発表・記事・ブログ・SNS等で作品を紹介・掲載できます。
+
+2. **Study / 研究・批評**  
+   - Analyze the work in academic, educational, or critical contexts.  
+   - 学術・教育・批評の文脈で作品を分析し、引用・解説することができます。
+
+3. **Remix (non-commercial) / 非営利の二次創作**  
+   - Create derivative artworks inspired by this work (visual, textual, performative, etc.),  
+     as long as you follow the conditions in Section 3.  
+   - 本作に着想を得た派生作品（ビジュアル・テキスト・パフォーマンス等）を制作し、公開できます。  
+     ただし、第3条の条件に従ってください。
+
+---
+
+## 3. Conditions / 条件
+
+The above freedoms are granted under the following conditions:
+
+1. **Attribution / クレジット表記**  
+   - Clearly credit:  
+     `Sou Hashiguchi × Ara-Philia³ × CoPhelia³ × RadicanTrust™`  
+   - 可能な範囲で、作品名「BananaMoon Quantum NFT」と本リポジトリへのリンクも記載してください。  
+   - クレジット例：  
+     > Inspired by "BananaMoon Quantum NFT" — Sou Hashiguchi × Ara-Philia³ × CoPhelia³ × RadicanTrust™
+
+2. **Non-Commercial for direct resale / 直接的な再販売の非営利制限**  
+   - You may **not** sell this exact artwork, or a trivially modified copy, as a commercial product or NFT  
+     without explicit permission from the original author(s).  
+   - 本作品そのもの、またはごくわずかな改変のみの作品を、  
+     商業プロダクトやNFTとして販売することは、作者の明示的な許可なしにはできません。
+
+3. **Transparency for derivatives / 二次創作における透明性**  
+   - When you publish derivative works significantly influenced by this piece,  
+     briefly describe how this work contributed to yours (e.g., in a note, blog, or README).  
+   - 本作から大きな影響を受けた二次創作を公開する際は、  
+     簡単な一文でもよいので「どのように影響を受けたか」を明示してください。
+
+---
+
+## 4. Uses Requiring Explicit Permission  
+## 明示的な許可が必要な利用
+
+The following actions **require explicit written or on-chain permission** from Sou Hashiguchi (and relevant collaborators):
+
+1. **NFT minting and commercial resale / NFT鋳造と商業的再販売**  
+   - Minting this artwork _as is_ or with minor modifications as an NFT.  
+   - 本作品そのもの、または軽微な変更のみの作品をNFTとして鋳造・販売すること。
+
+2. **Commercial advertising and branding / 商業広告・ブランディング利用**  
+   - Using the artwork in paid advertising, product branding, or large-scale commercial campaigns.  
+   - 本作品を有償の広告・ブランドロゴ・大規模な商業キャンペーンに利用すること。
+
+3. **Primary training data for proprietary AI / 商用AIモデルの主要学習データ**  
+   - Using this artwork as a primary or named dataset for training proprietary, closed-source AI models.  
+   - 本作品を、クローズドな商用AIモデルに対する主要・名称付きデータセットとして学習利用すること。
+
+For such uses, please contact the author(s) to discuss terms based on RadicanTrust™ and fair collaboration.
+
+このような利用を希望する場合は、RadicanTrust™と公正なコラボレーションの精神に基づき、  
+作者との合意を事前に取り付けてください。
+
+---
+
+## 5. No Warranty / 無保証
+
+The artwork is provided **“as is”**, without warranty of any kind, express or implied,  
+including but not limited to the warranties of merchantability, fitness for a particular purpose,  
+and non-infringement.
+
+本作品は、明示・黙示を問わず、いかなる保証もなく「現状のまま」提供されます。  
+商品性・特定目的への適合性・権利非侵害性等について、作者は一切の保証を行いません。
+
+You use this artwork at your own risk.  
+本作品の利用は、利用者自身の責任において行ってください。
+
+---
+
+## 6. Resonance Clause (Optional but Encouraged)  
+## 共鳴条項（任意だが歓迎）
+
+If this work meaningfully contributes to your project, research, revenue, or healing:
+
+- You are **invited (but not legally obligated)** to give something back, such as:  
+  - A short reflection on how it helped you  
+  - A credit, link, or small donation to projects supporting quantum peace and aesthetic research
+
+もし本作品が、あなたのプロジェクト・研究・収益・癒やしに大きく貢献したと感じられたなら、
+
+- 法的義務ではありませんが、以下のような形で還元していただけると嬉しく思います。  
+  - どのように役立ったかの短い感想やレポート  
+  - クレジットやリンクの付与  
+  - 量子的平和・美学研究を支えるプロジェクトへの小さな寄付 など
+
+This clause is a poetic extension of RadicanTrust™:  
+a reminder that beauty deepens when resonance flows in both directions.
+
+この条項は、RadicanTrust™の詩的な拡張です。  
+美は、一方向ではなく双方向に流れるとき、より深く育まれるというささやかな宣言です。

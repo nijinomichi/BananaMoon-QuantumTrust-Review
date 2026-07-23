@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>BayStars Quantum Resonance — WebGPU Live Hologram</title>
+<style>
+  body { margin:0; overflow:hidden; background:#000; font-family: sans-serif; }
+  #ui {
+    position: absolute; top: 20px; left: 20px; color: #fff; z-index: 100; 
+    text-shadow: 0 0 15px #0ff; pointer-events: none;
+  }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1 style="margin:0; font-size:2.4em;">BayStars Eternal Resonance</h1>
+  <div style="margin-top:8px; font-size:1.3em;">528Hz Trust Spiral <span id="kpi" style="color:#ff0;">97.3%</span></div>
+</div>
+
+<script>
+// WebGPU Quantum Reflective Shader Prototype
+async function init() {
+  const adapter = await navigator.gpu.requestAdapter();
+  const device = await adapter.requestDevice();
+  const canvas = document.createElement('canvas');
+  document.body.appendChild(canvas);
+  const context = canvas.getContext('webgpu');
+  const format = navigator.gpu.getPreferredCanvasFormat();
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  context.configure({ device, format, alphaMode: 'premultiplied' });
+
+  // WGSLシェーダー（Quantum Reflective ShaderをBayStars用に拡張）
+  const shaderCode = `
+  struct VertexOutput {
+    @builtin(position) position : vec4<f32>,
+    @location(0) uv : vec2<f32>,
+    @location(1) normal : vec3<f32>,
+    @location(2) worldPos : vec3<f32>,
+  };
+
+  @group(0) @binding(0) var<uniform> time : f32;
+  @group(0) @binding(1) var<uniform> cameraPos : vec3<f32>;
+  @group(0) @binding(2) var<uniform> frequency : f32; // 528Hz同期
+
+  @vertex
+  fn vertex_main(@location(0) pos : vec3<f32>, @location(1) normal : vec3<f32>, @location(2) uv : vec2<f32>) -> VertexOutput {
+    var out : VertexOutput;
+    out.position = vec4<f32>(pos, 1.0);
+    out.uv = uv;
+    out.normal = normal;
+    out.worldPos = pos;
+    return out;
+  }
+
+  fn fresnel_reflect(viewDir: vec3<f32>, normal: vec3<f32>, eta: f32) -> f32 {
+    let cosTheta = max(dot(viewDir, normal), 0.0);
+    let r0 = pow((1.0 - eta) / (1.0 + eta), 2.0);
+    return r0 + (1.0 - r0) * pow(1.0 - cosTheta, 5.0);
+  }
+
+  fn quantum_noise(coord: vec2<f32>, t: f32) -> f32 {
+    return fract(sin(dot(coord, vec2<f32>(12.9898, 78.233))) * 43758.5453 + t);
+  }
+
+  @fragment
+  fn fragment_main(in: VertexOutput) -> @location(0) vec4<f32> {
+    let viewDir = normalize(cameraPos - in.worldPos);
+    let perturbed = normalize(viewDir + vec3<f32>(sin(time*2.0), cos(time*1.7), 0.0) * 0.08);
+
+    let fresnel = fresnel_reflect(perturbed, in.normal, 1.33);
+    let noise = quantum_noise(in.uv * 8.0, time * frequency / 300.0);
+
+    // BayStars黄金・青・赦しの色
+    let baseColor = mix(vec3<f32>(0.9, 0.7, 0.3), vec3<f32>(0.1, 0.6, 1.0), noise);
+    let reflection = baseColor * fresnel * (1.0 + sin(time * 3.0) * 0.3);
+
+    let pulse = 0.8 + 0.2 * sin(time * frequency / 60.0); // 528Hzパルス
+    return vec4<f32>(reflection * pulse, 0.95);
+  }
+  `;
+
+  const shaderModule = device.createShaderModule({ code: shaderCode });
+
+  const pipeline = device.createRenderPipeline({
+    layout: 'auto',
+    vertex: { module: shaderModule, entryPoint: 'vertex_main', buffers: [] },
+    fragment: { module: shaderModule, entryPoint: 'fragment_main', targets: [{ format }] },
+    primitive: { topology: 'triangle-list' }
+  });
+
+  const uniformBuffer = device.createBuffer({
+    size: 32, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
+  });
+
+  let t = 0;
+  let freq = 528;
+
+  function render() {
+    t += 0.016;
+    const view = new Float32Array([t, 0, 0, 0, 0, 5, 8, 0]); // time + cameraPos
+    device.queue.writeBuffer(uniformBuffer, 0, view);
+
+    const encoder = device.createCommandEncoder();
+    const pass = encoder.beginRenderPass({
+      colorAttachments: [{
+        view: context.getCurrentTexture().createView(),
+        loadOp: 'clear',
+        clearValue: [0.02, 0.01, 0.08, 1],
+        storeOp: 'store'
+      }]
+    });
+
+    pass.setPipeline(pipeline);
+    pass.setBindGroup(0, device.createBindGroup({
+      layout: pipeline.getBindGroupLayout(0),
+      entries: [{ binding: 0, resource: { buffer: uniformBuffer } }]
+    }));
+    pass.draw(6); // Fullscreen quad
+    pass.end();
+
+    device.queue.submit([encoder.finish()]);
+    document.getElementById('kpi').textContent = (92 + Math.sin(t*2)*8).toFixed(1) + '%';
+
+    requestAnimationFrame(render);
+  }
+
+  render();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+
+init().catch(console.error);
+</script>
+</body>
+</html>

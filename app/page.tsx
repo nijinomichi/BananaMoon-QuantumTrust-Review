@@ -28,6 +28,11 @@ export default function BornRuleSymphony() {
   const projection = useMemo(
     () => composeBornProjection(amplitudes, loveFrequency),
     [amplitudes]
+  const trustStream = useRadicanTrustStream();
+
+  const projection = useMemo(
+    () => composeBornProjection(canonicalAmplitudes, loveFrequency),
+    []
   );
 
   const engine = useMemo(

@@ -12,14 +12,10 @@ export type ConsentRecord = {
 export class WaWaWaConsentLattice {
   private ledger = new Map<string, ConsentRecord>();
 
-  recordTransparentConsent(
-    id: string,
-    record: Omit<ConsentRecord, "timestamp" | "txHash"> & { txHash?: string }
-  ) {
+  recordTransparentConsent(id: string, record: Omit<ConsentRecord, "timestamp">) {
     this.ledger.set(id, {
       ...record,
       timestamp: Date.now(),
-      txHash: record.txHash ?? synthesizeQuantumReceipt(id, record),
     });
   }
 
@@ -42,4 +38,6 @@ function synthesizeQuantumReceipt(
     seed = (seed * 33 + quantumMessage.charCodeAt(index)) >>> 0;
   }
   return `0x${seed.toString(16).padStart(8, "0").repeat(8).slice(0, 64)}`;
+    return `${id} for ${record.purpose} welcomed by ${record.audience}`;
+  }
 }
