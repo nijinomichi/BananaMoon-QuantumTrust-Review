@@ -40,3 +40,6 @@ jobs:
 
       - name: Run existing tests
         run: npm test
+
+      - name: Build Next.js application
+        run: npm run build
