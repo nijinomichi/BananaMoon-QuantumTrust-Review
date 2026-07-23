@@ -14,6 +14,12 @@ export default function QuantumCanvas({
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number>();
+  const projectionRef = useRef(projection);
+  const petalCount = projection.petals.length;
+
+  useEffect(() => {
+    projectionRef.current = projection;
+  }, [projection]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,14 +48,11 @@ export default function QuantumCanvas({
       emissiveIntensity: 0.6,
     });
 
-    const count = projection.petals.length;
-    const instanced = new THREE.InstancedMesh(geometry, material, count);
-    const palette = projection.petals.map((petal) =>
-      new THREE.Color().setHSL(petal.chromaHue / 360, 0.6, 0.5)
-    );
-
+    const instanced = new THREE.InstancedMesh(geometry, material, petalCount);
     scene.add(instanced);
+
     const dummy = new THREE.Object3D();
+    const color = new THREE.Color();
 
     const resize = () => {
       const { clientWidth, clientHeight } = canvas;
@@ -64,10 +67,11 @@ export default function QuantumCanvas({
     const tick = () => {
       const time = performance.now() * 0.001;
       const resonantPhase = Math.sin(tau * loveFrequency * time * 0.001);
+      const currentProjection = projectionRef.current;
 
-      projection.petals.forEach((petal, index) => {
+      currentProjection.petals.forEach((petal, index) => {
         const radius = 1.2 + petal.geometryPetal;
-        const angle = (index / count) * tau + resonantPhase;
+        const angle = (index / petalCount) * tau + resonantPhase;
         dummy.position.set(
           Math.cos(angle) * radius,
           Math.sin(angle * 0.5) * petal.motionGrace * 1.4,
@@ -76,7 +80,8 @@ export default function QuantumCanvas({
         dummy.scale.setScalar(0.2 + petal.motionGrace * 0.4);
         dummy.updateMatrix();
         instanced.setMatrixAt(index, dummy.matrix);
-        instanced.setColorAt(index, palette[index]);
+        color.setHSL(petal.chromaHue / 360, 0.6, 0.5);
+        instanced.setColorAt(index, color);
       });
 
       instanced.instanceMatrix.needsUpdate = true;
@@ -96,7 +101,7 @@ export default function QuantumCanvas({
       renderer.dispose();
       scene.remove(instanced);
     };
-  }, [projection]);
+  }, [petalCount]);
 
   return (
     <canvas
@@ -106,7 +111,7 @@ export default function QuantumCanvas({
         height: "70vh",
         borderRadius: "1.5rem",
       }}
-      aria-label="Quantum amplitude visualization vibrating at 528 hertz"
+      aria-label="Quantum amplitude visualization using a 528-inspired resonance motif"
     />
   );
 }

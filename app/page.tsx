@@ -22,11 +22,12 @@ const canonicalAmplitudes: QuantumAmplitude[] = [
 
 export default function BornRuleSymphony() {
   const [consentWeave] = useState(() => new WaWaWaConsentLattice());
+  const [amplitudes, setAmplitudes] = useState(canonicalAmplitudes);
   const trustStream = useRadicanTrustStream();
 
   const projection = useMemo(
-    () => composeBornProjection(canonicalAmplitudes, loveFrequency),
-    []
+    () => composeBornProjection(amplitudes, loveFrequency),
+    [amplitudes]
   );
 
   const engine = useMemo(
@@ -44,21 +45,42 @@ export default function BornRuleSymphony() {
     consentWeave.recordTransparentConsent("public-demo", {
       audience: "interstellar",
       purpose: "aesthetic-harmonics",
+      chain: "polygon",
     });
-    engine.weaveProjection(projection);
     engine.start();
     return () => engine.stop();
-  }, [consentWeave, engine, projection]);
+  }, [consentWeave, engine]);
+
+  useEffect(() => {
+    engine.weaveProjection(projection);
+  }, [engine, projection]);
+
+  useEffect(() => {
+    const resonanceCadence = 1000 / Math.max(1, loveFrequency / 16);
+    const interval = setInterval(() => {
+      setAmplitudes((current) =>
+        current.map((amp, index) => {
+          const quantumDrift = Math.sin((Date.now() / 1000) * (index + 1) * 0.528) * 0.03;
+          return {
+            real: amp.real + quantumDrift,
+            imag: amp.imag - quantumDrift / 2,
+          };
+        })
+      );
+    }, resonanceCadence);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className={styles.pulseGrid}>
       <section className={styles.metaVerse}>
         <h1>Born Rule Quantum Aesthetic Mapping</h1>
         <p>
-          Translating quantum amplitudes into resonant palettes where every frame
-          vibrates at {loveFrequency} Hz to sustain RadicanTrust ≥ 0.87.
+          Translating quantum amplitudes into resonant palettes using 528 as a
+          symbolic aesthetic reference while sustaining RadicanTrust ≥ 0.87.
         </p>
-        <article className={styles.trustAura} aria-live="polite">
+        <article className={styles.trustAura}>
           <p>
             RadicanTrust Pulse:
             <span className={styles.trustValue}>

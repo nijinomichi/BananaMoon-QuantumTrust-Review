@@ -36,7 +36,9 @@ export function useRadicanTrustStream() {
   return useSyncExternalStore(
     (listener) => {
       listeners.add(listener);
-      return () => listeners.delete(listener);
+      return () => {
+        listeners.delete(listener);
+      };
     },
     snapshot,
     snapshot
@@ -98,7 +100,9 @@ export function useRadicanTrustHeartbeat(effect: (signal: TrustSignal) => void) 
     const listener = () => effect(snapshot());
     listeners.add(listener);
     listener();
-    return () => listeners.delete(listener);
+    return () => {
+      listeners.delete(listener);
+    };
   }, [effect]);
 }
 
