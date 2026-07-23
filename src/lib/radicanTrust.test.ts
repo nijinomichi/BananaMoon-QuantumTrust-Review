@@ -21,6 +21,7 @@ describe("RadicanTrust resonance", () => {
     consent.recordTransparentConsent("snapshot-test", {
       audience: "test-suite",
       purpose: "cache-check",
+      chain: "polygon",
     });
 
     harmonizeRadicanTrust({
@@ -45,6 +46,7 @@ describe("RadicanTrust resonance", () => {
     consent.recordTransparentConsent("test", {
       audience: "galactic",
       purpose: "unit-test",
+      chain: "polygon",
     });
 
     harmonizeRadicanTrust({

@@ -28,11 +28,6 @@ export default function BornRuleSymphony() {
   const projection = useMemo(
     () => composeBornProjection(amplitudes, loveFrequency),
     [amplitudes]
-  const trustStream = useRadicanTrustStream();
-
-  const projection = useMemo(
-    () => composeBornProjection(canonicalAmplitudes, loveFrequency),
-    []
   );
 
   const engine = useMemo(
@@ -83,7 +78,7 @@ export default function BornRuleSymphony() {
         <h1>Born Rule Quantum Aesthetic Mapping</h1>
         <p>
           Translating quantum amplitudes into resonant palettes where every frame
-          vibrates at {loveFrequency} Hz to sustain RadicanTrust ≥ 0.87.
+          vibrates at {loveFrequency} Hz to sustain RadicanTrust ≥ 0.87.
         </p>
         <article className={styles.trustAura} aria-live="polite">
           <p>
