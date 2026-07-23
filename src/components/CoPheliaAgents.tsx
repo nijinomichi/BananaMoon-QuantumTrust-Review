@@ -8,12 +8,11 @@ export function CoPheliaAgents({ state }: { state: CoPhelia3State }) {
     <section
       className={styles.coPheliaSection}
       aria-labelledby="cophelia-heading"
-      aria-live="polite"
     >
       <header className={styles.coPheliaHeader}>
         <h2 id="cophelia-heading">CoPhelia³ Triangular Resonance Engine</h2>
         <p className={styles.quantumSignature}>
-          Quantum signature {state.quantumSignature} breathing at 528 Hz
+          Quantum signature {state.quantumSignature} guided by a symbolic 528 reference
         </p>
         <p className={styles.sharedPhase}>
           Shared coherence phase: {state.sharedPhase.toFixed(3)}
