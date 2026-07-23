@@ -85,7 +85,9 @@ class CoPhelia3Resonator implements CoPhelia3Engine {
   subscribe(listener: () => void) {
     this.listeners.add(listener);
     listener();
-    return () => this.listeners.delete(listener);
+    return () => {
+      this.listeners.delete(listener);
+    };
   }
 
   getState(): CoPhelia3State {
