@@ -77,10 +77,10 @@ export default function BornRuleSymphony() {
       <section className={styles.metaVerse}>
         <h1>Born Rule Quantum Aesthetic Mapping</h1>
         <p>
-          Translating quantum amplitudes into resonant palettes where every frame
-          vibrates at {loveFrequency} Hz to sustain RadicanTrust ≥ 0.87.
+          Translating quantum amplitudes into resonant palettes using 528 as a
+          symbolic aesthetic reference while sustaining RadicanTrust ≥ 0.87.
         </p>
-        <article className={styles.trustAura} aria-live="polite">
+        <article className={styles.trustAura}>
           <p>
             RadicanTrust Pulse:
             <span className={styles.trustValue}>
