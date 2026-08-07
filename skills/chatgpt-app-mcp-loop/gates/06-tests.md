@@ -2,9 +2,9 @@
 
 ## Status
 
-`implementation_required`
+`verified_local`
 
-A read-only audit on 2026-08-08 JST found that the earlier MCP checks were real but ephemeral. No repository-backed test suite currently reproduces them.
+An initial read-only audit on 2026-08-08 JST found that the earlier MCP checks were real but ephemeral. A minimal persistent suite was then implemented in Replit and rerun from the saved repository state. All G6 acceptance categories now have local reproducible evidence.
 
 ## Goal
 
@@ -12,7 +12,66 @@ Convert the verified one-session checks from G1, G2, G4, and the Path C authenti
 
 G6 is not satisfied by a successful manual curl, an Agent report, or a successful production build alone.
 
-## Current observation
+## Verified result
+
+```yaml
+observed:
+  command: "npm test"
+  persisted_test_files: 3
+  tests:
+    total: 43
+    passed: 43
+    failed: 0
+    duration_seconds: 6.5
+  acceptance_matrix:
+    covered: 27
+    partial: 0
+    not_covered: 0
+  protocol:
+    initialize: passed
+    correct_bearer: passed
+    missing_bearer: passed
+    wrong_bearer: passed
+    server_token_absent_fail_closed: passed
+    malformed_json: passed
+    unknown_method: passed
+    unsupported_get: passed
+    unsupported_delete: passed
+  tools:
+    advertised_count: 7
+    ids_titles_descriptions: passed
+    input_output_schemas: passed
+    annotations: passed
+    positive_calls: passed
+    tool_specific_invalid_inputs: passed
+    unknown_tool: passed
+    not_found: passed
+    structured_content_against_output_schema: passed
+    model_readable_content_consistency: passed
+  idempotency:
+    all_tools_repeated_twice: passed
+    fixture_cleanup: passed
+    shogi_games_before_after: "15 -> 15"
+  regression:
+    rest_json_endpoints: "4/4 passed"
+    isolated_root_ui_http_200: passed
+    running_development_ui_http_200: observed
+  production_build:
+    passed: true
+    development_markers_absent: true
+    fail_closed_boundary_present: true
+  secret_safety:
+    real_secret_read: false
+    synthetic_token_only: true
+    automated_echo_log_source_guards: "3/3 passed"
+  documentation:
+    fail_closed_statement_present: true
+    stale_unset_open_statement_absent: true
+  publish_performed: false
+  public_production_verified: false
+```
+
+## Initial observation
 
 ```yaml
 observed:
@@ -85,12 +144,16 @@ G6 may become `verified_local` only when all of the following are present and re
 
 ```yaml
 observed:
-  - "No persistent test suite exists."
-  - "No secret literal was found in the inspected repository or temporary outputs."
+  - "A persistent local suite exists and reruns through one command."
+  - "43 of 43 tests passed from the saved state."
+  - "The suite uses a synthetic token and automated leak guards without reading the real secret."
+  - "The focused implementation preserved the existing tool, schema, auth, REST, and UI behavior under local regression tests."
 inferred:
-  - "A focused local suite can likely preserve the existing verified behavior."
+  - "The local contracts are reproducible enough to satisfy G6."
 unverified:
-  - "Whether server construction must be minimally refactored for isolated HTTP tests."
+  - "Public Production behavior after the latest changes."
+  - "End-to-end connection from ChatGPT Developer Mode."
+  - "Measured timing-attack resistance."
 imagined: []
 ```
 
@@ -98,6 +161,14 @@ imagined: []
 
 [OpenAI connect-and-test guidance](https://developers.openai.com/plugins/deploy/connect-chatgpt) requires representative inputs, edge cases, authentication errors, annotations, structured output checks, and reruns after metadata changes.
 
+## Known out-of-scope issues
+
+- The public Production URL still serves the older deployment.
+- The public root-page instability remains a G7 concern.
+- ChatGPT Developer Mode end-to-end connection remains unverified.
+- Seventeen pre-existing client type errors remain outside this focused G6 suite.
+- Timing-safe comparison is implemented, but timing-attack resistance was not empirically measured.
+
 ## Next action
 
-Implement the minimal persistent suite in Replit, rerun it locally, and record only the resulting evidence. Keep Path C, G7, and G8 unchanged.
+G6 is complete at the local reproducibility layer. Under selected Path C, keep G7 as `deferred_by_path_c`, do not Publish, and do not create or run the G8 submission artifact. Reopen the public path only after an explicit human switch to Path A or B.
