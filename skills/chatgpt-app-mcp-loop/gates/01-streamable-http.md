@@ -39,7 +39,7 @@ observed:
     unsupported_get_delete: "JSON-RPC -32000 / HTTP 405"
   regression:
     existing_rest_routes: verified
-    existing_ui_root: verified
+    existing_ui_root: verified_local
   submission_metadata_created: false
 inferred:
   - "The local transport boundary is ready for tool-contract review."
@@ -51,12 +51,21 @@ imagined: []
 - A successful REST request does not count as MCP evidence.
 - A route merely named `/mcp` would not satisfy this gate without MCP protocol behavior.
 - Local verification does not satisfy G7 public deployment.
-- Authentication is tracked separately under G5 even though local Bearer checks were also observed during this cycle.
+- Authentication is tracked separately under G5 even though Bearer checks were observed during this cycle.
 
 ## Public deployment observation
 
-At the time of this evidence update, the existing public Replit deployment was still serving an older build and did **not** expose the verified local MCP implementation. Public `/mcp` returned a plain 500 response. Therefore G7 remains `not_verified`.
+A later Replit runtime observation superseded the earlier plain-500 state for public `/mcp`:
+
+- Replit publish status reported `success`.
+- Correct-token `initialize` returned HTTP 200 and protocol version `2025-03-26`.
+- Missing and incorrect tokens returned HTTP 401 / JSON-RPC `-32001`.
+- Malformed JSON returned HTTP 400 / `-32700`.
+- Unsupported GET returned HTTP 405 / `-32000`.
+- `/api/quantum-sessions` returned JSON successfully.
+
+G7 nevertheless remains `not_verified`: repeated public root-page observations alternated between plain 500 responses and HTML containing Vite development markers. In addition, the later G2 output-contract changes have not yet been published.
 
 ## Next gate
 
-G1 is complete at the local transport layer. Proceed to **G2 — stable tools, descriptions, schemas, and handlers**, while production hardening/deployment continues independently toward G7.
+G1 is complete at the local transport layer and G2 is now `verified_local`. Decide G3 applicability and proceed to G4 while G5 and G7 remain separate open gates.
