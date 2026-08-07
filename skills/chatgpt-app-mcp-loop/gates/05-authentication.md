@@ -2,9 +2,25 @@
 
 ## Status
 
-`decision_required`
+`selected_development_only`
 
-The current shared Bearer token is verified as a fail-closed development boundary. It is not promoted to the final public plugin authentication contract.
+Path C was selected by the human reviewer on 2026-08-08 JST. The current shared Bearer token remains a verified fail-closed development boundary and is not promoted to the final public plugin authentication contract.
+
+## Human decision
+
+```yaml
+decision:
+  selected_path: C
+  label: development_only_shared_bearer
+  selected_at: "2026-08-08 JST"
+  local_development_boundary: verified
+  public_submission_auth: not_satisfied
+  public_submission: intentionally_blocked
+  reversible: true
+  possible_next_path: A
+```
+
+This decision closes the human-choice pause without claiming public-auth readiness. G6 local test packaging may proceed. G7 publication and G8 submission remain blocked by design.
 
 ## Goal
 
@@ -112,9 +128,18 @@ Required before verification:
 5. Return the required authentication challenge and tool-level auth metadata.
 6. Test linking, denial, scope boundaries, revocation, and reviewer access without fabricating credentials.
 
-### C — Development-only shared Bearer
+### C — Development-only shared Bearer — selected
 
-Keep the existing fail-closed token for private testing and do not submit the plugin publicly. This can be a valid pause state, but it does not complete G5 for public submission.
+Keep the existing fail-closed token for private testing and do not submit the plugin publicly.
+
+Observed implementation retained:
+
+- the server fails closed when `MCP_AUTH_TOKEN` is absent;
+- missing and incorrect client tokens are rejected;
+- the secret value is not stored in GitHub evidence;
+- the shared token is treated as a development access boundary, not as user identity or OAuth.
+
+This is a valid development state. It explicitly does not complete G5 for public submission.
 
 ## Prohibition
 
@@ -123,10 +148,23 @@ Keep the existing fail-closed token for private testing and do not submit the pl
 - Do not infer consent to publish free text from the existence of an unauthenticated REST route.
 - Do not advance to G8 until one path is chosen and verified.
 
-## Recommended decision
+## Why A remains the future public recommendation
 
-`A — Public no-auth, privacy-minimized` is the smallest submission-aligned path for the present read-only, public-project use case, provided `rawInput` and future user-supplied fields are removed or redacted from the public contract.
+`A — Public no-auth, privacy-minimized` remains the smallest submission-aligned path if the human later chooses public distribution because:
+
+1. the current seven MCP tools are read-only and have unauthenticated public REST equivalents;
+2. anonymous public data does not require user-account authorization;
+3. a shared Bearer secret is not per-user authorization and should not be presented as such;
+4. OAuth 2.1 would add justified complexity only if user-specific or restricted data remains in scope;
+5. removing or permanently redacting `rawInput` and future private fields can create a smaller, auditable public contract.
+
+The recommendation is conditional, not automatic. Public reachability alone does not establish publication consent.
+
+## Official basis
+
+- [OpenAI authentication guidance](https://developers.openai.com/plugins/build/auth) permits read-only anonymous MCP surfaces, while authenticated servers are expected to use OAuth 2.1.
+- [OpenAI connect-and-test guidance](https://developers.openai.com/plugins/deploy/connect-chatgpt) supports Developer Mode testing before public submission and separates test endpoints from submission-ready production infrastructure.
 
 ## Next action
 
-Obtain the human publication decision, implement only the selected path, then verify G5. G6 test packaging may be prepared without weakening this boundary.
+Proceed to G6 local positive and negative test packaging under Path C. Do not publish G2/G4 changes, weaken the Bearer boundary, generate `chatgpt-app-submission.json`, or advance to G8. Switch to Path A only after an explicit human decision and a verified field-level privacy policy.
