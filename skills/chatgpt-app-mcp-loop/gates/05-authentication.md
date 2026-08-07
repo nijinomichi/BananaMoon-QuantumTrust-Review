@@ -2,25 +2,31 @@
 
 ## Status
 
-`selected_development_only`
+`path_a_selected_implementation_in_progress`
 
 Path C was selected by the human reviewer on 2026-08-08 JST. The current shared Bearer token remains a verified fail-closed development boundary and is not promoted to the final public plugin authentication contract.
 
 ## Human decision
 
 ```yaml
-decision:
-  selected_path: C
-  label: development_only_shared_bearer
-  selected_at: "2026-08-08 JST"
-  local_development_boundary: verified
-  public_submission_auth: not_satisfied
-  public_submission: intentionally_blocked
-  reversible: true
-  possible_next_path: A
+decision_history:
+  - path: C
+    label: development_only_shared_bearer
+    selected_at: "2026-08-08 JST"
+    result: "G6 verified locally; public path remained blocked"
+  - path: A
+    label: public_noauth_privacy_minimized
+    selected_at: "2026-08-08 JST"
+    status: implementation_in_progress
+current_decision:
+  selected_path: A
+  public_submission_auth: noauth_intended
+  privacy_minimization_required: true
+  publish_before_privacy_verification: prohibited
+  reversible_before_publish: true
 ```
 
-This decision closes the human-choice pause without claiming public-auth readiness. G6 local test packaging may proceed. G7 publication and G8 submission remain blocked by design.
+Path C is preserved as the verified development checkpoint rather than erased. Path A is now the active human decision. This transition authorizes implementation of an explicitly anonymous, privacy-minimized public MCP contract; it does not authorize publishing unreviewed fields.
 
 ## Goal
 
@@ -103,7 +109,7 @@ Existing unauthenticated REST exposure is evidence of current reachability, not 
 
 ## Decision paths
 
-### A — Public no-auth, privacy-minimized
+### A — Public no-auth, privacy-minimized — selected
 
 Use this when the plugin is intended to expose public project data.
 
@@ -128,7 +134,7 @@ Required before verification:
 5. Return the required authentication challenge and tool-level auth metadata.
 6. Test linking, denial, scope boundaries, revocation, and reviewer access without fabricating credentials.
 
-### C — Development-only shared Bearer — selected
+### C — Development-only shared Bearer — previous checkpoint
 
 Keep the existing fail-closed token for private testing and do not submit the plugin publicly.
 
@@ -148,7 +154,7 @@ This is a valid development state. It explicitly does not complete G5 for public
 - Do not infer consent to publish free text from the existence of an unauthenticated REST route.
 - Do not advance to G8 until one path is chosen and verified.
 
-## Why A remains the future public recommendation
+## Why A was selected
 
 `A — Public no-auth, privacy-minimized` remains the smallest submission-aligned path if the human later chooses public distribution because:
 
@@ -158,7 +164,7 @@ This is a valid development state. It explicitly does not complete G5 for public
 4. OAuth 2.1 would add justified complexity only if user-specific or restricted data remains in scope;
 5. removing or permanently redacting `rawInput` and future private fields can create a smaller, auditable public contract.
 
-The recommendation is conditional, not automatic. Public reachability alone does not establish publication consent.
+The selection is now explicit, but implementation remains conditional on field-level minimization. Public reachability alone does not establish consent to publish any specific field.
 
 ## Official basis
 
@@ -167,4 +173,4 @@ The recommendation is conditional, not automatic. Public reachability alone does
 
 ## Next action
 
-Proceed to G6 local positive and negative test packaging under Path C. Do not publish G2/G4 changes, weaken the Bearer boundary, generate `chatgpt-app-submission.json`, or advance to G8. Switch to Path A only after an explicit human decision and a verified field-level privacy policy.
+Audit every field returned by all seven tools, define and persist a field-level publication policy, permanently exclude free text and unnecessary identifiers, declare `securitySchemes: [{ type: "noauth" }]` per public tool, and remove the route-wide shared Bearer requirement only after privacy-negative tests exist. Rerun the full local suite before Publish. Do not generate `chatgpt-app-submission.json` or advance to G8 until the latest public Production endpoint is independently verified.
