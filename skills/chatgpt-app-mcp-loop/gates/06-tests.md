@@ -2,17 +2,89 @@
 
 ## Status
 
-`verified_local`
+`verified_local_path_a`
 
-An initial read-only audit on 2026-08-08 JST found that the earlier MCP checks were real but ephemeral. A minimal persistent suite was then implemented in Replit and rerun from the saved repository state. All G6 acceptance categories now have local reproducible evidence.
+An initial audit found that earlier MCP checks were real but ephemeral. Path C first produced a persistent 43-test checkpoint. After the human switched to Path A, the saved suite was updated with anonymous-auth and seeded privacy-negative coverage and rerun successfully with 50 tests.
 
 ## Goal
 
-Convert the verified one-session checks from G1, G2, G4, and the Path C authentication boundary into one deterministic, secret-safe local test command.
+Keep G1, G2, G4, the selected authentication model, and the public field policy reproducible through one deterministic, secret-safe local test command.
 
 G6 is not satisfied by a successful manual curl, an Agent report, or a successful production build alone.
 
-## Verified result
+## Path A verified result
+
+```yaml
+observed:
+  command: "npm test"
+  persisted_test_files: 3
+  tests:
+    total: 50
+    passed: 50
+    failed: 0
+    duration_seconds: 6.6
+  noauth:
+    tool_descriptors: "7/7 passed"
+    anonymous_initialize: passed
+    anonymous_tools_list: passed
+    anonymous_tool_calls: "7/7 passed"
+    authorization_header_shape_invariance: passed
+  privacy_negative:
+    seeded_data_types: 4
+    marker_absence_mcp: passed
+    marker_absence_rest: passed
+    prohibited_keys_absent: passed
+    exact_mcp_allowlists: "7/7 passed"
+    exact_rest_allowlists: "4/4 passed"
+    fixture_cleanup: passed
+  prohibited_fields_checked:
+    - rawInput
+    - sessionKey
+    - sessionName
+    - dataPoints
+    - nftMetadata
+    - creators
+    - referrer
+    - layer1
+    - layer2
+    - layer3
+    - decomposition
+  protocol_and_contract_regression:
+    input_output_schemas: passed
+    structured_content: passed
+    model_readable_content: passed
+    annotations: passed
+    invalid_inputs: passed
+    unknown_tool: passed
+    not_found: passed
+    repeated_calls: passed
+  regression:
+    rest_json_endpoints: "4/4 passed"
+    isolated_root_ui_http_200: passed
+    running_development_ui_http_200: observed
+    database_rows_unchanged: passed
+  production_build:
+    passed: true
+    development_markers_absent: true
+    former_bearer_code_absent: true
+  publish_performed: false
+  public_production_verified: false
+```
+
+## Path A acceptance evidence
+
+G6 is verified locally for Path A because the saved suite demonstrates:
+
+1. explicit per-tool no-auth metadata;
+2. anonymous protocol and tool execution;
+3. identical public result shapes regardless of an Authorization header;
+4. exact output schemas and allowlists;
+5. seeded private markers and prohibited keys absent from MCP and REST output;
+6. fixture cleanup and database-row invariance;
+7. the existing protocol, handler, error, annotation, REST, and UI regressions;
+8. a clean local production build with the former route-wide Bearer code absent.
+
+## Path C baseline result
 
 ```yaml
 observed:
@@ -106,7 +178,7 @@ observed:
 
 The absence of a persistent suite does not retroactively invalidate the observed local results in G1, G2, or G4. It means those observations cannot yet satisfy the independent reproducibility requirement of G6.
 
-## Acceptance evidence
+## Original Path C acceptance evidence
 
 G6 may become `verified_local` only when all of the following are present and rerun successfully:
 
@@ -131,7 +203,7 @@ G6 may become `verified_local` only when all of the following are present and re
 6. The complete command is rerun from the persisted repository state and its result is recorded without secret values.
 7. No Publish action or public endpoint claim is used to satisfy this local gate.
 
-## Minimal implementation boundary
+## Original minimal implementation boundary
 
 - Add the smallest fitting test runner and HTTP test dependency.
 - Prefer one focused MCP contract suite over a broad test architecture.
@@ -145,15 +217,17 @@ G6 may become `verified_local` only when all of the following are present and re
 ```yaml
 observed:
   - "A persistent local suite exists and reruns through one command."
-  - "43 of 43 tests passed from the saved state."
-  - "The suite uses a synthetic token and automated leak guards without reading the real secret."
-  - "The focused implementation preserved the existing tool, schema, auth, REST, and UI behavior under local regression tests."
+  - "50 of 50 Path A tests passed from the saved state."
+  - "All seven tools advertise no-auth and execute anonymously."
+  - "Seeded private markers and prohibited fields remain absent from MCP and REST output."
+  - "Authorization headers do not change the public result shape."
+  - "The focused implementation preserved protocol, tool, annotation, REST, UI, and database invariants under local tests."
 inferred:
-  - "The local contracts are reproducible enough to satisfy G6."
+  - "The local Path A contracts are reproducible enough to satisfy G6."
 unverified:
   - "Public Production behavior after the latest changes."
   - "End-to-end connection from ChatGPT Developer Mode."
-  - "Measured timing-attack resistance."
+  - "Safety of existing non-MCP mutation endpoints before republication."
 imagined: []
 ```
 
@@ -161,14 +235,14 @@ imagined: []
 
 [OpenAI connect-and-test guidance](https://developers.openai.com/plugins/deploy/connect-chatgpt) requires representative inputs, edge cases, authentication errors, annotations, structured output checks, and reruns after metadata changes.
 
-## Known out-of-scope issues
+## Known open issues
 
 - The public Production URL still serves the older deployment.
+- Existing non-MCP mutation endpoints require a separate authorization and response-minimization audit before republication.
 - The public root-page instability remains a G7 concern.
 - ChatGPT Developer Mode end-to-end connection remains unverified.
-- Seventeen pre-existing client type errors remain outside this focused G6 suite.
-- Timing-safe comparison is implemented, but timing-attack resistance was not empirically measured.
+- Seventeen pre-existing client type errors remain outside this focused G6 suite and were not increased by Path A.
 
 ## Next action
 
-G6 is complete at the local reproducibility layer. Under selected Path C, keep G7 as `deferred_by_path_c`, do not Publish, and do not create or run the G8 submission artifact. Reopen the public path only after an explicit human switch to Path A or B.
+G6 is complete at the local Path A reproducibility layer. Do not Publish until the separate mutation-endpoint hardening is verified. Then rerun the same no-auth, privacy, protocol, REST, UI, and build checks against public Production under G7. Do not create or run the G8 submission artifact before G7 is independently verified.
