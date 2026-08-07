@@ -2,9 +2,9 @@
 
 ## Status
 
-`path_a_selected_implementation_in_progress`
+`verified_local_path_a`
 
-Path C was selected by the human reviewer on 2026-08-08 JST. The current shared Bearer token remains a verified fail-closed development boundary and is not promoted to the final public plugin authentication contract.
+Path C was first verified as a development checkpoint. The human then selected Path A on 2026-08-08 JST. The saved Replit state now implements an explicitly anonymous, privacy-minimized MCP and REST read contract. Public Production has not yet been updated.
 
 ## Human decision
 
@@ -17,11 +17,11 @@ decision_history:
   - path: A
     label: public_noauth_privacy_minimized
     selected_at: "2026-08-08 JST"
-    status: implementation_in_progress
+    status: verified_local
 current_decision:
   selected_path: A
-  public_submission_auth: noauth_intended
-  privacy_minimization_required: true
+  public_submission_auth: noauth_verified_local
+  privacy_minimization: verified_local
   publish_before_privacy_verification: prohibited
   reversible_before_publish: true
 ```
@@ -37,7 +37,7 @@ Choose and implement one honest authentication model:
 
 Do not present a static shared secret as user authorization.
 
-## Current Bearer boundary
+## Historical Path C Bearer boundary
 
 ```yaml
 observed:
@@ -56,6 +56,65 @@ observed:
   json_rpc_auth_meta: absent
 ```
 
+## Path A local verification
+
+The exact public allowlist is recorded in [public-field-policy.md](../policies/public-field-policy.md).
+
+```yaml
+observed:
+  test_command: "npm test"
+  tests:
+    files: 3
+    total: 50
+    passed: 50
+    failed: 0
+    duration_seconds: 6.6
+  security_schemes:
+    expected: noauth
+    advertised: "7/7"
+  anonymous_protocol:
+    initialize: passed
+    tools_list: passed
+    tool_calls: "7/7 passed"
+  authorization_header:
+    absent: passed
+    arbitrary_value: passed
+    bearer_value: passed
+    result_shape_deep_equal: true
+    privilege_escalation: false
+  privacy_negative:
+    seeded_private_data_types: 4
+    mcp_marker_absence: passed
+    rest_marker_absence: passed
+    prohibited_key_absence: passed
+    fixture_cleanup: passed
+  projections:
+    mcp_exact_allowlist: "7/7 passed"
+    rest_exact_allowlist: "4/4 passed"
+    unknown_fields_default_dropped: passed
+  removed_from_public_output:
+    - rawInput
+    - sessionKey
+    - sessionName
+    - dataPoints
+    - nftMetadata
+    - creators
+    - referrer
+    - derived_layers
+    - decomposition
+  old_bearer_boundary:
+    source_absent: passed
+    production_bundle_absent: passed
+    documentation_absent: passed
+    former_401_503_errors_absent: passed
+  production_build: passed
+  database_mutation: false
+  publish_performed: false
+  public_production_verified: false
+```
+
+This satisfies G5 locally. It does not satisfy G7 until the latest build is intentionally published and the public endpoint is re-observed.
+
 ## OAuth readiness observation
 
 ```yaml
@@ -73,7 +132,7 @@ observed:
 
 The SPA fallback returning HTTP 200 at a well-known path does not count as OAuth discovery.
 
-## Data-boundary observation
+## Initial data-boundary observation
 
 All seven tools are read-only. Equivalent data is currently reachable from unauthenticated REST routes.
 
@@ -138,25 +197,25 @@ Required before verification:
 
 Keep the existing fail-closed token for private testing and do not submit the plugin publicly.
 
-Observed implementation retained:
+Historical evidence retained:
 
-- the server fails closed when `MCP_AUTH_TOKEN` is absent;
-- missing and incorrect client tokens are rejected;
-- the secret value is not stored in GitHub evidence;
-- the shared token is treated as a development access boundary, not as user identity or OAuth.
+- the server previously failed closed when `MCP_AUTH_TOKEN` was absent;
+- missing and incorrect client tokens were rejected;
+- no secret value was stored in GitHub evidence;
+- the shared token was treated as a development boundary, never as user identity or OAuth.
 
-This is a valid development state. It explicitly does not complete G5 for public submission.
+The active Path A implementation no longer contains or enforces that route-wide Bearer boundary.
 
 ## Prohibition
 
 - Do not expose secret values in tests, logs, GitHub, or submission artifacts.
-- Do not label current shared-token access as OAuth.
+- Do not relabel the historical shared-token checkpoint as OAuth.
 - Do not infer consent to publish free text from the existence of an unauthenticated REST route.
 - Do not advance to G8 until one path is chosen and verified.
 
 ## Why A was selected
 
-`A — Public no-auth, privacy-minimized` remains the smallest submission-aligned path if the human later chooses public distribution because:
+`A — Public no-auth, privacy-minimized` was selected as the smallest submission-aligned path because:
 
 1. the current seven MCP tools are read-only and have unauthenticated public REST equivalents;
 2. anonymous public data does not require user-account authorization;
@@ -164,7 +223,7 @@ This is a valid development state. It explicitly does not complete G5 for public
 4. OAuth 2.1 would add justified complexity only if user-specific or restricted data remains in scope;
 5. removing or permanently redacting `rawInput` and future private fields can create a smaller, auditable public contract.
 
-The selection is now explicit, but implementation remains conditional on field-level minimization. Public reachability alone does not establish consent to publish any specific field.
+The selection and local implementation are now verified against the field-level allowlist. Public reachability still does not establish consent to publish any field outside that allowlist.
 
 ## Official basis
 
@@ -173,4 +232,4 @@ The selection is now explicit, but implementation remains conditional on field-l
 
 ## Next action
 
-Audit every field returned by all seven tools, define and persist a field-level publication policy, permanently exclude free text and unnecessary identifiers, declare `securitySchemes: [{ type: "noauth" }]` per public tool, and remove the route-wide shared Bearer requirement only after privacy-negative tests exist. Rerun the full local suite before Publish. Do not generate `chatgpt-app-submission.json` or advance to G8 until the latest public Production endpoint is independently verified.
+Keep G5 at `verified_local_path_a` while the existing non-MCP mutation endpoints undergo a separate pre-publication authorization audit. Do not Publish until withdrawal, Pinata upload, IPFS-hash update, and mutation-response boundaries are verified safe. After that hardening, publish intentionally and re-run the no-auth and privacy matrix against public Production under G7. Do not generate `chatgpt-app-submission.json` or advance to G8 until G7 is independently verified.
